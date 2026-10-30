@@ -853,6 +853,19 @@ class TonetuneWindow(Adw.ApplicationWindow):
         if not manual and (stat.st_mtime_ns == self._file_mtime
                            and stat.st_size == self._file_size):
             return
+        try:
+            rhythm = load_ac7(path)
+        except AC7Error as exc:
+            if attempt < 3:
+                if not self.engine.playing:
+                    self._set_status("Aguardando o arquivo terminar de salvar…")
+                GLib.timeout_add(
+                    650, lambda: (self._reload_file(attempt + 1), False)[1])
+            else:
+                self._set_status("Não foi possível recarregar o arquivo.")
+                self._toast(str(exc))
+            return
+
         was_playing = self.engine.playing
         was_active = self.engine.active
         self._request += 1
@@ -860,17 +873,6 @@ class TonetuneWindow(Adw.ApplicationWindow):
         if was_active:
             self.engine.stop()
             self._stop_timer()
-        try:
-            rhythm = load_ac7(path)
-        except AC7Error as exc:
-            if attempt < 3:
-                self._set_status("Aguardando o arquivo terminar de salvar…")
-                GLib.timeout_add(
-                    650, lambda: (self._reload_file(attempt + 1), False)[1])
-            else:
-                self._set_status("Não foi possível recarregar o arquivo.")
-                self._toast(str(exc))
-            return
         self._apply_rhythm(rhythm, reloading=True, autoplay=was_playing)
         if not was_playing:
             self._set_status("Ritmo atualizado (parado).")
