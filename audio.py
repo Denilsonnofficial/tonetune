@@ -21,6 +21,7 @@ from ac7 import AC7_PPQ, Rhythm, Section  # noqa: E402
 PPQ = 480
 TICK_FACTOR = PPQ // AC7_PPQ  # 5
 CHANNELS = {3: 2, 4: 3, 5: 4, 6: 5, 7: 6, 8: 7}
+CACHE_VERSION = "2"
 
 SOUNDFONTS = (
     Path("/usr/share/sounds/sf2/default-GM.sf2"),
@@ -117,30 +118,32 @@ def build_midi(rhythm: Rhythm, section: Section, tempo: int,
 
     note_total = 0
 
-    # As duas partes de bateria compartilham o canal 10 do GM. Na prévia,
-    # usamos o kit da parte 2 quando ela está ativa (como no editor).
-    drum_parts = [part for part in (1, 2)
-                  if _active(part, muted, solo)
-                  and section.note_count_for_part(part)
-                  and volume_for(part, section.mixer_for_part(part)) > 0]
-    if drum_parts:
-        kit_part = 2 if 2 in drum_parts else drum_parts[0]
-        mixer = section.mixer_for_part(kit_part)
-        volume = volume_for(kit_part, mixer)
-        notes = []
-        for part in drum_parts:
-            notes.extend(section.notes_for_part(part))
-        if notes:
-            track = mido.MidiTrack()
-            mid.tracks.append(track)
-            channel = 9
-            track.append(Message(
-                "program_change", channel=channel,
-                program=max(0, min(127, patch_for(kit_part, mixer))),
-                time=0))
-            _append_controls(track, channel, mixer, volume)
-            _append_notes(track, notes, channel, total_ticks)
-            note_total += len(notes)
+    # Cada parte de bateria usa um canal próprio com banco 128 (percussão) no
+    # FluidSynth. Assim Percussão e Bateria podem ter kits e volumes
+    # independentes na prévia, mesmo sendo dois canais de bateria.
+    for part in (1, 2):
+        if not _active(part, muted, solo):
+            continue
+        notes = section.notes_for_part(part)
+        if not notes:
+            continue
+        mixer = section.mixer_for_part(part)
+        volume = volume_for(part, mixer)
+        if volume == 0:
+            continue
+        track = mido.MidiTrack()
+        mid.tracks.append(track)
+        channel = 9 if part == 1 else 10
+        track.append(Message(
+            "control_change", channel=channel, control=0, value=1, time=0))
+        track.append(Message(
+            "control_change", channel=channel, control=32, value=0, time=0))
+        track.append(Message(
+            "program_change", channel=channel,
+            program=max(0, min(127, patch_for(part, mixer))), time=0))
+        _append_controls(track, channel, mixer, volume)
+        _append_notes(track, notes, channel, total_ticks)
+        note_total += len(notes)
 
     for part in range(3, 9):
         if not _active(part, muted, solo):
@@ -226,6 +229,7 @@ class Renderer:
         instrument_overrides = instrument_overrides or {}
         volume_overrides = volume_overrides or {}
         digest = hashlib.sha256()
+        digest.update(CACHE_VERSION.encode("ascii"))
         digest.update(content)
         digest.update(f"{section.index}|{tempo}|".encode("ascii"))
         digest.update(",".join(map(str, sorted(muted))).encode("ascii"))
@@ -274,7 +278,7 @@ class Renderer:
                               instrument_overrides, volume_overrides)
             midi.save(mid_path)
             command = [
-                "fluidsynth", "-ni", "-q", "-g", "0.75", "-r", "44100",
+                "fluidsynth", "-ni", "-q", "-g", "0.65", "-r", "44100",
                 "-T", "wav", "-F", str(raw_wav), str(_soundfont()),
                 str(mid_path),
             ]

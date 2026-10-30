@@ -63,8 +63,7 @@ class InstrumentDialog(Adw.Window):
         content.set_margin_end(12)
 
         hint = Gtk.Label(
-            label=("Escolha um dos kits de bateria. Na prévia GM, Percussão "
-                   "e Bateria compartilham o mesmo kit."
+            label=("Escolha um dos kits de bateria para esta parte."
                    if part in (1, 2)
                    else "Escolha qualquer tom do CT-X800 para ouvir esta "
                         "parte com outro instrumento."),

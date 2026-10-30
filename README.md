@@ -152,8 +152,8 @@ A prévia no PC usa um **SoundFont GM**, então:
 
 - o programa GM equivalente é usado para cada timbre, inclusive nos tons
   escolhidos manualmente;
-- as duas partes de bateria são misturadas em um único kit GM (a troca de kit
-  vale para as duas);
+- as duas partes de bateria usam canais separados na prévia, então podem ter
+  kits e volumes independentes;
 - o resultado é uma boa aproximação para ensaiar e comparar versões, mas o
   timbre definitivo só sai no CT-X800.
 
@@ -177,7 +177,7 @@ Nenhum arquivo do ritmo é modificado.
 - Não grava no pendrive nem no teclado.
 - A prévia é GM, não os timbres exatos do CT-X800.
 - Trocas de instrumento e volume são da sessão: não são gravadas no AC7.
-- Na prévia GM, Percussão e Bateria compartilham o mesmo kit.
+- A prévia GM é uma aproximação dos kits e timbres do teclado.
 - Elementos vazios aparecem desabilitados na lista de seções.
 
 ## Créditos

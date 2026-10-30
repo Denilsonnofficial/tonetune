@@ -817,22 +817,17 @@ class TonetuneWindow(Adw.ApplicationWindow):
         if self.current_section is None:
             return
         mixer = self.current_section.mixer_for_part(part)
-        drum = part in (1, 2)
-        parts = (1, 2) if drum else (part,)
-        override = ((self.instruments.get(2) or self.instruments.get(1))
-                    if drum else self.instruments.get(part))
+        override = self.instruments.get(part)
 
         def apply(tone: Tone) -> None:
-            for number in parts:
-                self.instruments[number] = tone
-                self._refresh_part_row(number)
+            self.instruments[part] = tone
+            self._refresh_part_row(part)
             if self.engine.active or self._busy:
                 self._schedule_restart()
 
         def reset() -> None:
-            for number in parts:
-                self.instruments.pop(number, None)
-                self._refresh_part_row(number)
+            self.instruments.pop(part, None)
+            self._refresh_part_row(part)
             if self.engine.active or self._busy:
                 self._schedule_restart()
 

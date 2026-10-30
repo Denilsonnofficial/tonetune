@@ -9,7 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from ac7 import Mixer, load_ac7  # noqa: E402
+from ac7 import Mixer, Note, Track, load_ac7  # noqa: E402
 from audio import AudioError, Renderer, SOUNDFONTS, build_midi  # noqa: E402
 
 DEMO = Path(__file__).resolve().parents[1] / "examples" / "DEMO.AC7"
@@ -58,6 +58,19 @@ class MidiBuildTest(unittest.TestCase):
         channels = {message.channel for track in midi.tracks
                     for message in track if message.type == "program_change"}
         self.assertNotIn(3, channels)
+
+    def test_two_drum_channels(self) -> None:
+        section = copy.deepcopy(self.section)
+        section.tracks.append(Track(
+            part=1,
+            notes=[Note(0, 35, 100, 24), Note(96, 42, 80, 24)],
+        ))
+        section.mixers[1] = Mixer(0, 120, 100, 64, 40, 0)
+        midi = build_midi(self.rhythm, section, self.rhythm.tempo)
+        channels = {message.channel for track in midi.tracks
+                    for message in track if message.type == "program_change"}
+        self.assertIn(9, channels)
+        self.assertIn(10, channels)
 
 
 @unittest.skipUnless(shutil.which("fluidsynth")
