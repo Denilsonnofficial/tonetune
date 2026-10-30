@@ -70,13 +70,11 @@ class TonetuneWindow(Adw.ApplicationWindow):
         self._timer_id: int | None = None
         self._reload_source: int | None = None
         self._restart_source: int | None = None
-        self._tempo_source: int | None = None
         self._monitors: list[Gio.FileMonitor] = []
         self._file_mtime = 0
         self._file_size = -1
         self._suppress_sections = False
         self._loading = False
-        self._last_was_playing = False
 
         self.renderer = Renderer()
         self.engine = PlaybackEngine(volume=int(self.config.get("volume", 85)) / 100)
