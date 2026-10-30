@@ -108,7 +108,8 @@ def build_midi(rhythm: Rhythm, section: Section, tempo: int,
     # usamos o kit da parte 2 quando ela está ativa (como no editor).
     drum_parts = [part for part in (1, 2)
                   if _active(part, muted, solo)
-                  and section.note_count_for_part(part)]
+                  and section.note_count_for_part(part)
+                  and section.mixer_for_part(part).volume > 0]
     if drum_parts:
         kit_part = 2 if 2 in drum_parts else drum_parts[0]
         mixer = section.mixer_for_part(kit_part)
@@ -133,6 +134,8 @@ def build_midi(rhythm: Rhythm, section: Section, tempo: int,
         if not notes:
             continue
         mixer = section.mixer_for_part(part)
+        if mixer.volume == 0:
+            continue
         track = mido.MidiTrack()
         mid.tracks.append(track)
         channel = CHANNELS[part]
