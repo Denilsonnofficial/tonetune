@@ -1,0 +1,172 @@
+/* Tonetune — ajustes visuais sobre o Adwaita. */
+
+.panel {
+  background-color: @card_bg_color;
+  border-radius: 14px;
+  box-shadow: 0 1px 3px alpha(black, 0.10);
+}
+
+.panel-title {
+  font-weight: 700;
+}
+
+.rhythm-name {
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.welcome-title {
+  font-size: 38px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.welcome-subtitle {
+  opacity: 0.72;
+  font-size: 15px;
+}
+
+.welcome-button {
+  min-width: 260px;
+}
+
+.recent-title {
+  font-weight: 700;
+  opacity: 0.8;
+}
+
+.recent-button {
+  border-radius: 10px;
+  padding: 6px 10px;
+}
+
+.badge {
+  background-color: alpha(currentColor, 0.08);
+  border-radius: 999px;
+  padding: 3px 9px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.transport-play {
+  min-width: 52px;
+  min-height: 52px;
+  border-radius: 999px;
+  background-color: @accent_bg_color;
+  color: @accent_fg_color;
+  padding: 0;
+  border: none;
+  -gtk-icon-size: 22px;
+}
+
+.transport-play:hover {
+  background-color: alpha(@accent_fg_color, 0.16);
+  background-image: linear-gradient(alpha(@accent_fg_color, 0.10),
+                                    alpha(@accent_fg_color, 0.10));
+}
+
+.transport-play:active {
+  background-image: linear-gradient(alpha(black, 0.12),
+                                    alpha(black, 0.12));
+}
+
+.transport-small {
+  min-width: 38px;
+  min-height: 38px;
+  border-radius: 999px;
+  -gtk-icon-size: 18px;
+}
+
+.sections-list {
+  background: transparent;
+}
+
+.section-row {
+  border-radius: 10px;
+}
+
+.section-row:hover {
+  background-color: alpha(currentColor, 0.05);
+}
+
+.section-row:selected {
+  background-color: alpha(@accent_bg_color, 0.18);
+}
+
+.section-number {
+  font-weight: 700;
+  color: alpha(@window_fg_color, 0.55);
+}
+
+.section-name {
+  font-weight: 600;
+  color: @window_fg_color;
+}
+
+.empty-section {
+  opacity: 0.45;
+}
+
+.section-play {
+  min-width: 30px;
+  min-height: 30px;
+  border-radius: 999px;
+  -gtk-icon-size: 15px;
+}
+
+.part-row {
+  padding: 5px 8px;
+  border-radius: 10px;
+}
+
+.part-row:hover {
+  background-color: alpha(currentColor, 0.04);
+}
+
+.part-inactive {
+  opacity: 0.48;
+}
+
+.part-name {
+  font-size: 13px;
+}
+
+.part-mute,
+.part-solo {
+  min-width: 28px;
+  min-height: 28px;
+  padding: 0;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 11px;
+}
+
+.part-mute:checked {
+  background-color: #e5484d;
+  color: #ffffff;
+}
+
+.part-solo:checked {
+  background-color: #f5a524;
+  color: #1b1b1b;
+}
+
+.part-volume {
+  min-height: 3px;
+}
+
+.part-volume > trough {
+  min-height: 3px;
+  border-radius: 999px;
+  background-color: alpha(currentColor, 0.10);
+}
+
+.part-volume > trough > progress {
+  min-height: 3px;
+  border-radius: 999px;
+  background-color: @accent_bg_color;
+}
+
+.monospace {
+  font-family: monospace;
+}

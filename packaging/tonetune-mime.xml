@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-casio-ac7">
+    <comment>Ritmo do Casio CT-X</comment>
+    <comment xml:lang="pt_BR">Ritmo do Casio CT-X</comment>
+    <glob pattern="*.AC7"/>
+    <glob pattern="*.ac7"/>
+    <magic priority="60">
+      <match value="AC07" type="string" offset="0"/>
+    </magic>
+  </mime-type>
+</mime-info>

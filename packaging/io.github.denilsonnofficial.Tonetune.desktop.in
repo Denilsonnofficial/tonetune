@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Version=1.5
+Name=Tonetune
+GenericName=Reprodutor de ritmos
+Comment=Ouça e teste ritmos AC7 do Casio CT-X800
+Exec=@EXEC@ %f
+Path=@ROOT@
+Icon=io.github.denilsonnofficial.Tonetune
+Terminal=false
+Categories=AudioVideo;Audio;Player;Midi;
+Keywords=AC7;Casio;CT-X800;ritmo;reprodutor;tonetune;
+StartupNotify=true
+StartupWMClass=io.github.denilsonnofficial.Tonetune
+MimeType=application/x-casio-ac7;

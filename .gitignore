@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+*.wav
+.cache/
+build/
+dist/
+.venv/

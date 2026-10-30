@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512"
+     viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Tonetune</title>
+  <desc id="desc">Um diapasão com um botão de play, símbolo do reprodutor
+  de ritmos do Casio CT-X800.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#17102e"/>
+      <stop offset="0.55" stop-color="#2a1650"/>
+      <stop offset="1" stop-color="#3d1d67"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.38" r="0.55">
+      <stop offset="0" stop-color="#7c5cff" stop-opacity="0.42"/>
+      <stop offset="0.6" stop-color="#7c5cff" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#7c5cff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="0.7" y2="1">
+      <stop offset="0" stop-color="#ffd166"/>
+      <stop offset="0.55" stop-color="#ffb04a"/>
+      <stop offset="1" stop-color="#ff7a59"/>
+    </linearGradient>
+    <linearGradient id="play" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7ff7e3"/>
+      <stop offset="1" stop-color="#2ec4b6"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="pill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffd166"/>
+      <stop offset="1" stop-color="#ff7a59"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <rect width="512" height="512" rx="112" fill="url(#glow)"/>
+  <rect x="1.5" y="1.5" width="509" height="509" rx="110.5"
+        fill="none" stroke="#ffffff" stroke-opacity="0.10" stroke-width="3"/>
+
+  <!-- sulcos discretos, como um disco -->
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.055">
+    <circle cx="256" cy="252" r="178" stroke-width="2"/>
+    <circle cx="256" cy="252" r="208" stroke-width="1.5"/>
+    <circle cx="256" cy="252" r="236" stroke-width="1"/>
+  </g>
+
+  <!-- sombra do diapasão -->
+  <g transform="translate(0 9)" opacity="0.28">
+    <path d="M186 126 L186 286 C186 316 210 338 240 338
+             L272 338 C302 338 326 316 326 286 L326 126"
+          fill="none" stroke="#08040f" stroke-width="40"
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="238" y="330" width="36" height="84" rx="18" fill="#08040f"/>
+  </g>
+
+  <!-- diapasão -->
+  <path d="M186 126 L186 286 C186 316 210 338 240 338
+           L272 338 C302 338 326 316 326 286 L326 126"
+        fill="none" stroke="url(#metal)" stroke-width="34"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="238" y="330" width="36" height="84" rx="18" fill="url(#metal)"/>
+
+  <!-- brilho superior -->
+  <path d="M186 126 L186 286 C186 316 210 338 240 338
+           L272 338 C302 338 326 316 326 286 L326 126"
+        fill="none" stroke="url(#shine)" stroke-width="34"
+        stroke-linecap="round" stroke-linejoin="round"
+        stroke-dasharray="60 190" stroke-dashoffset="12"/>
+
+  <!-- play dentro do diapasão -->
+  <path d="M233 192 Q233 184 240 180 L288 224 Q293 228 288 232
+           L240 276 Q233 272 233 264 Z"
+        fill="url(#play)"/>
+  <path d="M233 192 Q233 184 240 180 L288 224 Q293 228 288 232
+           L240 276 Q233 272 233 264 Z"
+        fill="none" stroke="#0b3b38" stroke-opacity="0.18" stroke-width="2"/>
+
+  <!-- ondas de som -->
+  <g fill="none" stroke="url(#pill)" stroke-linecap="round">
+    <path d="M386 195 Q405 252 386 309" stroke-width="10" opacity="0.9"/>
+    <path d="M416 172 Q446 252 416 332" stroke-width="8" opacity="0.55"/>
+    <path d="M126 195 Q107 252 126 309" stroke-width="10" opacity="0.9"/>
+    <path d="M96 172 Q66 252 96 332" stroke-width="8" opacity="0.55"/>
+  </g>
+</svg>

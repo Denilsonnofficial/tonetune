@@ -1,0 +1,6002 @@
+[
+ {
+  "number": 1,
+  "name": "STAGE PIANO",
+  "program": 0,
+  "bank": 1,
+  "dsp": true,
+  "octave": 0,
+  "category": 1,
+  "category_name": "PIANO"
+ },
+ {
+  "number": 2,
+  "name": "GRAND PIANO",
+  "program": 0,
+  "bank": 3,
+  "dsp": false,
+  "octave": 0,
+  "category": 1,
+  "category_name": "PIANO"
+ },
+ {
+  "number": 3,
+  "name": "BRIGHT PIANO",
+  "program": 1,
+  "bank": 1,
+  "dsp": true,
+  "octave": 0,
+  "category": 1,
+  "category_name": "PIANO"
+ },
+ {
+  "number": 4,
+  "name": "MELLOW PIANO",
+  "program": 0,
+  "bank": 2,
+  "dsp": true,
+  "octave": 0,
+  "category": 1,
+  "category_name": "PIANO"
+ },
+ {
+  "number": 5,
+  "name": "POP PIANO",
+  "program": 0,
+  "bank": 32,
+  "dsp": true,
+  "octave": 0,
+  "category": 1,
+  "category_name": "PIANO"
+ },
+ {
+  "number": 6,
+  "name": "ROCK PIANO",
+  "program": 1,
+  "bank": 2,
+  "dsp": true,
+  "octave": 0,
+  "category": 1,
+  "category_name": "PIANO"
+ },
+ {
+  "number": 7,
+  "name": "DANCE PIANO",
+  "program": 1,
+  "bank": 3,
+  "dsp": true,
+  "octave": 0,
+  "category": 1,
+  "category_name": "PIANO"
+ },
+ {
+  "number": 8,
+  "name": "LA PIANO",
+  "program": 1,
+  "bank": 4,
+  "dsp": false,
+  "octave": 0,
+  "category": 1,
+  "category_name": "PIANO"
+ },
+ {
+  "number": 9,
+  "name": "TACK PIANO",
+  "program": 0,
+  "bank": 33,
+  "dsp": false,
+  "octave": 0,
+  "category": 1,
+  "category_name": "PIANO"
+ },
+ {
+  "number": 10,
+  "name": "MONO PIANO",
+  "program": 0,
+  "bank": 4,
+  "dsp": false,
+  "octave": 0,
+  "category": 1,
+  "category_name": "PIANO"
+ },
+ {
+  "number": 11,
+  "name": "HONKY-TONK",
+  "program": 3,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 1,
+  "category_name": "PIANO"
+ },
+ {
+  "number": 12,
+  "name": "OCTAVE PIANO",
+  "program": 3,
+  "bank": 33,
+  "dsp": false,
+  "octave": 0,
+  "category": 1,
+  "category_name": "PIANO"
+ },
+ {
+  "number": 13,
+  "name": "WIDE GRAND PIANO",
+  "program": 0,
+  "bank": 5,
+  "dsp": false,
+  "octave": 0,
+  "category": 1,
+  "category_name": "PIANO"
+ },
+ {
+  "number": 14,
+  "name": "STRINGS PIANO",
+  "program": 0,
+  "bank": 34,
+  "dsp": false,
+  "octave": 0,
+  "category": 1,
+  "category_name": "PIANO"
+ },
+ {
+  "number": 15,
+  "name": "PIANO PAD",
+  "program": 0,
+  "bank": 35,
+  "dsp": false,
+  "octave": 0,
+  "category": 1,
+  "category_name": "PIANO"
+ },
+ {
+  "number": 16,
+  "name": "ELEC.GRAND PIANO",
+  "program": 2,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 1,
+  "category_name": "PIANO"
+ },
+ {
+  "number": 17,
+  "name": "MODERN E.G.PIANO",
+  "program": 2,
+  "bank": 33,
+  "dsp": false,
+  "octave": 0,
+  "category": 1,
+  "category_name": "PIANO"
+ },
+ {
+  "number": 18,
+  "name": "HARPSICHORD 1",
+  "program": 6,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 1,
+  "category_name": "PIANO"
+ },
+ {
+  "number": 19,
+  "name": "HARPSICHORD 2",
+  "program": 6,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 1,
+  "category_name": "PIANO"
+ },
+ {
+  "number": 20,
+  "name": "COUPLED HARPSICHORD",
+  "program": 6,
+  "bank": 33,
+  "dsp": true,
+  "octave": 0,
+  "category": 1,
+  "category_name": "PIANO"
+ },
+ {
+  "number": 21,
+  "name": "GALAXIA EP",
+  "program": 5,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 22,
+  "name": "DYNAMIC EP",
+  "program": 4,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 23,
+  "name": "LUCENT EP",
+  "program": 5,
+  "bank": 33,
+  "dsp": true,
+  "octave": 0,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 24,
+  "name": "ELEC.PIANO 1",
+  "program": 4,
+  "bank": 1,
+  "dsp": true,
+  "octave": 0,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 25,
+  "name": "ELEC.PIANO 2",
+  "program": 4,
+  "bank": 2,
+  "dsp": true,
+  "octave": 0,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 26,
+  "name": "ELEC.PIANO 3",
+  "program": 4,
+  "bank": 3,
+  "dsp": true,
+  "octave": 0,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 27,
+  "name": "ELEC.PIANO 4",
+  "program": 4,
+  "bank": 4,
+  "dsp": false,
+  "octave": 0,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 28,
+  "name": "ELEC.PIANO 5",
+  "program": 5,
+  "bank": 34,
+  "dsp": false,
+  "octave": 0,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 29,
+  "name": "ELEC.PIANO 6",
+  "program": 4,
+  "bank": 5,
+  "dsp": false,
+  "octave": 0,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 30,
+  "name": "60'S E.PIANO",
+  "program": 4,
+  "bank": 6,
+  "dsp": true,
+  "octave": 0,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 31,
+  "name": "DYNO ELEC.PIANO",
+  "program": 4,
+  "bank": 33,
+  "dsp": true,
+  "octave": 0,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 32,
+  "name": "DIGITAL E.PIANO 1",
+  "program": 5,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 33,
+  "name": "DIGITAL E.PIANO 2",
+  "program": 5,
+  "bank": 2,
+  "dsp": false,
+  "octave": 0,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 34,
+  "name": "DIGITAL E.PIANO 3",
+  "program": 5,
+  "bank": 3,
+  "dsp": false,
+  "octave": 0,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 35,
+  "name": "PHASER E.PIANO",
+  "program": 4,
+  "bank": 7,
+  "dsp": true,
+  "octave": 0,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 36,
+  "name": "E.PIANO WIDE",
+  "program": 4,
+  "bank": 8,
+  "dsp": false,
+  "octave": 0,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 37,
+  "name": "MELLOW E.PIANO",
+  "program": 4,
+  "bank": 9,
+  "dsp": false,
+  "octave": 0,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 38,
+  "name": "E.PIANO PAD",
+  "program": 4,
+  "bank": 34,
+  "dsp": false,
+  "octave": 0,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 39,
+  "name": "CLAVI 1",
+  "program": 7,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 40,
+  "name": "CLAVI 2",
+  "program": 7,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 41,
+  "name": "CLAVI 3",
+  "program": 7,
+  "bank": 2,
+  "dsp": false,
+  "octave": 0,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 42,
+  "name": "CLAVI 4",
+  "program": 7,
+  "bank": 33,
+  "dsp": false,
+  "octave": 0,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 43,
+  "name": "CLAVI 5",
+  "program": 7,
+  "bank": 3,
+  "dsp": false,
+  "octave": 0,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 44,
+  "name": "VIBRAPHONE 1",
+  "program": 11,
+  "bank": 1,
+  "dsp": true,
+  "octave": 0,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 45,
+  "name": "VIBRAPHONE 2",
+  "program": 11,
+  "bank": 2,
+  "dsp": false,
+  "octave": 0,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 46,
+  "name": "VIBRAPHONE WIDE",
+  "program": 11,
+  "bank": 3,
+  "dsp": false,
+  "octave": 0,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 47,
+  "name": "CELESTA",
+  "program": 8,
+  "bank": 1,
+  "dsp": false,
+  "octave": 1,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 48,
+  "name": "GLOCKENSPIEL",
+  "program": 9,
+  "bank": 1,
+  "dsp": false,
+  "octave": 1,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 49,
+  "name": "MUSIC BOX",
+  "program": 10,
+  "bank": 32,
+  "dsp": false,
+  "octave": 1,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 50,
+  "name": "MARIMBA",
+  "program": 12,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 51,
+  "name": "XYLOPHONE",
+  "program": 13,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 52,
+  "name": "TUBULAR BELL",
+  "program": 14,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 53,
+  "name": "CHURCH BELLS",
+  "program": 14,
+  "bank": 33,
+  "dsp": true,
+  "octave": 0,
+  "category": 2,
+  "category_name": "ELEC.PIANO"
+ },
+ {
+  "number": 54,
+  "name": "JS ORGAN",
+  "program": 17,
+  "bank": 32,
+  "dsp": true,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 55,
+  "name": "RTF FD ORGAN",
+  "program": 16,
+  "bank": 32,
+  "dsp": true,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 56,
+  "name": "ROCK OD ORGAN",
+  "program": 18,
+  "bank": 32,
+  "dsp": true,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 57,
+  "name": "TREMOLO ORGAN",
+  "program": 16,
+  "bank": 5,
+  "dsp": true,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 58,
+  "name": "JAZZ ORGAN 1",
+  "program": 17,
+  "bank": 33,
+  "dsp": true,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 59,
+  "name": "DP ORGAN",
+  "program": 16,
+  "bank": 4,
+  "dsp": true,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 60,
+  "name": "ELEC.ORGAN 1",
+  "program": 16,
+  "bank": 1,
+  "dsp": true,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 61,
+  "name": "GOSPEL ORGAN",
+  "program": 17,
+  "bank": 38,
+  "dsp": true,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 62,
+  "name": "ELEC.ORGAN 2",
+  "program": 16,
+  "bank": 2,
+  "dsp": true,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 63,
+  "name": "ELEC.ORGAN 3",
+  "program": 16,
+  "bank": 33,
+  "dsp": true,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 64,
+  "name": "PERC.ORGAN 1",
+  "program": 17,
+  "bank": 1,
+  "dsp": true,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 65,
+  "name": "FULL DRAWBAR",
+  "program": 16,
+  "bank": 3,
+  "dsp": true,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 66,
+  "name": "ROCK ORGAN 1",
+  "program": 18,
+  "bank": 1,
+  "dsp": true,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 67,
+  "name": "JAZZ ORGAN 2",
+  "program": 17,
+  "bank": 34,
+  "dsp": true,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 68,
+  "name": "ELEC.ORGAN 4",
+  "program": 16,
+  "bank": 34,
+  "dsp": true,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 69,
+  "name": "ELEC.ORGAN 5",
+  "program": 16,
+  "bank": 35,
+  "dsp": true,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 70,
+  "name": "PERC.ORGAN 2",
+  "program": 17,
+  "bank": 35,
+  "dsp": true,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 71,
+  "name": "CLICK ORGAN",
+  "program": 17,
+  "bank": 37,
+  "dsp": true,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 72,
+  "name": "70'S ORGAN",
+  "program": 17,
+  "bank": 36,
+  "dsp": true,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 73,
+  "name": "ROCK ORGAN 2",
+  "program": 18,
+  "bank": 2,
+  "dsp": true,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 74,
+  "name": "ORGAN PAD",
+  "program": 16,
+  "bank": 6,
+  "dsp": false,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 75,
+  "name": "PIPE ORGAN 1",
+  "program": 19,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 76,
+  "name": "PIPE ORGAN 2",
+  "program": 19,
+  "bank": 33,
+  "dsp": false,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 77,
+  "name": "CHAPEL ORGAN",
+  "program": 19,
+  "bank": 34,
+  "dsp": false,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 78,
+  "name": "PIPE ORGAN 3",
+  "program": 19,
+  "bank": 2,
+  "dsp": false,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 79,
+  "name": "THEATER ORGAN",
+  "program": 19,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 80,
+  "name": "ACCODION FRENCH 1",
+  "program": 21,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 81,
+  "name": "ACCODION FRENCH 2",
+  "program": 21,
+  "bank": 33,
+  "dsp": false,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 82,
+  "name": "ACCODION FRENCH 3",
+  "program": 21,
+  "bank": 34,
+  "dsp": false,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 83,
+  "name": "ACCODION ITALY 1",
+  "program": 21,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 84,
+  "name": "ACCODION ITALY 2",
+  "program": 21,
+  "bank": 35,
+  "dsp": false,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 85,
+  "name": "ACCORDION",
+  "program": 21,
+  "bank": 2,
+  "dsp": false,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 86,
+  "name": "BANDONEON",
+  "program": 23,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 87,
+  "name": "BANDONEON SOLO",
+  "program": 23,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 3,
+  "category_name": "ORGAN"
+ },
+ {
+  "number": 88,
+  "name": "NYLON GUITAR VELO.SLIDE",
+  "program": 24,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 89,
+  "name": "STEEL GUITAR VELO.SLIDE",
+  "program": 25,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 90,
+  "name": "NYLON STR.GUITAR 1",
+  "program": 24,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 91,
+  "name": "NYLON STR.GUITAR 2",
+  "program": 24,
+  "bank": 2,
+  "dsp": false,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 92,
+  "name": "NYLON STR.GUITAR 3",
+  "program": 24,
+  "bank": 4,
+  "dsp": true,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 93,
+  "name": "STEEL STR.GUITAR 1",
+  "program": 25,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 94,
+  "name": "STEEL STR.GUITAR 2",
+  "program": 25,
+  "bank": 2,
+  "dsp": false,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 95,
+  "name": "STEEL STR.GUITAR 3",
+  "program": 25,
+  "bank": 3,
+  "dsp": false,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 96,
+  "name": "STEEL STR.GUITAR 4",
+  "program": 25,
+  "bank": 4,
+  "dsp": false,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 97,
+  "name": "12 STR.GUITAR",
+  "program": 25,
+  "bank": 5,
+  "dsp": false,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 98,
+  "name": "JAZZ GUITAR 1",
+  "program": 26,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 99,
+  "name": "JAZZ GUITAR 2",
+  "program": 26,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 100,
+  "name": "OD OCT JAZZ GUITAR",
+  "program": 26,
+  "bank": 2,
+  "dsp": true,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 101,
+  "name": "CRUNCH JAZZ GUITAR",
+  "program": 26,
+  "bank": 3,
+  "dsp": true,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 102,
+  "name": "CLEAN GUITAR 1",
+  "program": 27,
+  "bank": 32,
+  "dsp": true,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 103,
+  "name": "CLEAN GUITAR 2",
+  "program": 27,
+  "bank": 1,
+  "dsp": true,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 104,
+  "name": "CLEAN GUITAR 3",
+  "program": 27,
+  "bank": 2,
+  "dsp": true,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 105,
+  "name": "CLEAN GUITAR 4",
+  "program": 27,
+  "bank": 3,
+  "dsp": false,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 106,
+  "name": "CLEAN GUITAR 5",
+  "program": 27,
+  "bank": 4,
+  "dsp": false,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 107,
+  "name": "CLEAN GUITAR 6",
+  "program": 27,
+  "bank": 33,
+  "dsp": false,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 108,
+  "name": "CLEAN GUITAR 7",
+  "program": 27,
+  "bank": 7,
+  "dsp": false,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 109,
+  "name": "CHORUS CLEAN GUITAR 1",
+  "program": 27,
+  "bank": 5,
+  "dsp": true,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 110,
+  "name": "CHORUS CLEAN GUITAR 2",
+  "program": 27,
+  "bank": 6,
+  "dsp": false,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 111,
+  "name": "WAH CLEAN GUITAR",
+  "program": 27,
+  "bank": 34,
+  "dsp": true,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 112,
+  "name": "CRUNCH ELEC.GUITAR 1",
+  "program": 29,
+  "bank": 3,
+  "dsp": true,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 113,
+  "name": "CRUNCH ELEC.GUITAR 2",
+  "program": 29,
+  "bank": 32,
+  "dsp": true,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 114,
+  "name": "CRUNCH ELEC.GUITAR 3",
+  "program": 27,
+  "bank": 8,
+  "dsp": false,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 115,
+  "name": "CHORUS CRUNCH GUITAR",
+  "program": 29,
+  "bank": 4,
+  "dsp": true,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 116,
+  "name": "MUTE GUITAR",
+  "program": 28,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 117,
+  "name": "CRUNCH MUTE GUITAR",
+  "program": 28,
+  "bank": 2,
+  "dsp": true,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 118,
+  "name": "OVERDRIVE MUTE GT",
+  "program": 28,
+  "bank": 5,
+  "dsp": false,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 119,
+  "name": "PHASER MUTE GUITAR",
+  "program": 28,
+  "bank": 3,
+  "dsp": true,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 120,
+  "name": "AMB MUTE GUITAR",
+  "program": 28,
+  "bank": 4,
+  "dsp": true,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 121,
+  "name": "HUM BLUES GUITAR",
+  "program": 29,
+  "bank": 5,
+  "dsp": true,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 122,
+  "name": "OVERDRIVE GUITAR 1",
+  "program": 29,
+  "bank": 1,
+  "dsp": true,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 123,
+  "name": "OVERDRIVE GUITAR 2",
+  "program": 29,
+  "bank": 2,
+  "dsp": false,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 124,
+  "name": "LFO WAH OD GUITAR",
+  "program": 29,
+  "bank": 6,
+  "dsp": true,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 125,
+  "name": "WAH OD GUITAR",
+  "program": 29,
+  "bank": 33,
+  "dsp": true,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 126,
+  "name": "CRY OD GUITAR",
+  "program": 29,
+  "bank": 34,
+  "dsp": true,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 127,
+  "name": "FLANGER OD GUITAR",
+  "program": 29,
+  "bank": 35,
+  "dsp": true,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 128,
+  "name": "DISTORTION GT 1",
+  "program": 30,
+  "bank": 1,
+  "dsp": true,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 129,
+  "name": "DISTORTION GT 2",
+  "program": 30,
+  "bank": 2,
+  "dsp": true,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 130,
+  "name": "DISTORTION GT 3",
+  "program": 30,
+  "bank": 3,
+  "dsp": true,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 131,
+  "name": "DISTORTION GT 4",
+  "program": 30,
+  "bank": 5,
+  "dsp": false,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 132,
+  "name": "WAH DIST GUITAR",
+  "program": 30,
+  "bank": 4,
+  "dsp": true,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 133,
+  "name": "MANDOLIN",
+  "program": 25,
+  "bank": 40,
+  "dsp": false,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 134,
+  "name": "UKULELE",
+  "program": 24,
+  "bank": 3,
+  "dsp": false,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 135,
+  "name": "VERSATILE NYLON GUITAR",
+  "program": 24,
+  "bank": 8,
+  "dsp": false,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 136,
+  "name": "VERSATILE STEEL GUITAR",
+  "program": 25,
+  "bank": 8,
+  "dsp": false,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 137,
+  "name": "VERSATILE SINGLE COIL E.GUITAR",
+  "program": 27,
+  "bank": 9,
+  "dsp": false,
+  "octave": 0,
+  "category": 4,
+  "category_name": "GUITAR"
+ },
+ {
+  "number": 138,
+  "name": "ACOUSTIC BASS 1",
+  "program": 32,
+  "bank": 1,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 139,
+  "name": "FINGERED BASS 1",
+  "program": 33,
+  "bank": 6,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 140,
+  "name": "FINGERED BASS 2",
+  "program": 33,
+  "bank": 5,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 141,
+  "name": "FINGERED BASS VELO.SLAP 1",
+  "program": 33,
+  "bank": 33,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 142,
+  "name": "FINGERED BASS VELO.SLAP 2",
+  "program": 33,
+  "bank": 32,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 143,
+  "name": "SLAP BASS 1",
+  "program": 36,
+  "bank": 1,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 144,
+  "name": "FINGER SLAP BASS 1",
+  "program": 36,
+  "bank": 5,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 145,
+  "name": "SYNTH-BASS 1",
+  "program": 39,
+  "bank": 3,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 146,
+  "name": "ACOUSTIC BASS 2",
+  "program": 32,
+  "bank": 32,
+  "dsp": true,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 147,
+  "name": "RIDE BASS",
+  "program": 32,
+  "bank": 33,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 148,
+  "name": "FINGERED BASS 3",
+  "program": 33,
+  "bank": 1,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 149,
+  "name": "FINGERED BASS 4",
+  "program": 33,
+  "bank": 2,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 150,
+  "name": "FINGERED BASS 5",
+  "program": 33,
+  "bank": 3,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 151,
+  "name": "FINGERED BASS 6",
+  "program": 33,
+  "bank": 4,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 152,
+  "name": "FINGERED BASS 7",
+  "program": 33,
+  "bank": 7,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 153,
+  "name": "CHO FINGERED BASS",
+  "program": 33,
+  "bank": 8,
+  "dsp": true,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 154,
+  "name": "WAH FINGERED BASS",
+  "program": 33,
+  "bank": 9,
+  "dsp": true,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 155,
+  "name": "PICKED BASS 1",
+  "program": 34,
+  "bank": 1,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 156,
+  "name": "PICKED BASS 2",
+  "program": 34,
+  "bank": 2,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 157,
+  "name": "MUTE PICKED BASS",
+  "program": 34,
+  "bank": 5,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 158,
+  "name": "SLAP BASS 2",
+  "program": 36,
+  "bank": 32,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 159,
+  "name": "SLAP BASS 3",
+  "program": 36,
+  "bank": 2,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 160,
+  "name": "CHO SLAP BASS",
+  "program": 36,
+  "bank": 33,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 161,
+  "name": "AMP SLAP BASS",
+  "program": 36,
+  "bank": 3,
+  "dsp": true,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 162,
+  "name": "WAH SLAP BASS",
+  "program": 36,
+  "bank": 34,
+  "dsp": true,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 163,
+  "name": "FRETLESS BASS",
+  "program": 35,
+  "bank": 32,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 164,
+  "name": "CHO FRETLESS BASS",
+  "program": 35,
+  "bank": 33,
+  "dsp": true,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 165,
+  "name": "AMP FRETLESS BASS",
+  "program": 35,
+  "bank": 34,
+  "dsp": true,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 166,
+  "name": "FINGER SLAP BASS 2",
+  "program": 36,
+  "bank": 4,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 167,
+  "name": "FINGER SLAP BASS 3",
+  "program": 36,
+  "bank": 35,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 168,
+  "name": "SYNTH-BASS 2",
+  "program": 38,
+  "bank": 6,
+  "dsp": true,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 169,
+  "name": "SYNTH-BASS 3",
+  "program": 38,
+  "bank": 1,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 170,
+  "name": "SYNTH-BASS 4",
+  "program": 38,
+  "bank": 2,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 171,
+  "name": "SYNTH-BASS 5",
+  "program": 39,
+  "bank": 1,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 172,
+  "name": "SYNTH-BASS 6",
+  "program": 39,
+  "bank": 2,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 173,
+  "name": "SYNTH-BASS 7",
+  "program": 38,
+  "bank": 32,
+  "dsp": true,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 174,
+  "name": "SYNTH-BASS 8",
+  "program": 39,
+  "bank": 33,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 175,
+  "name": "SYNTH-BASS 9",
+  "program": 39,
+  "bank": 4,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 176,
+  "name": "SYNTH-BASS 10",
+  "program": 39,
+  "bank": 5,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 177,
+  "name": "SYNTH-BASS 11",
+  "program": 38,
+  "bank": 4,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 178,
+  "name": "SYNTH-BASS 12",
+  "program": 38,
+  "bank": 5,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 179,
+  "name": "SYNTH-BASS 13",
+  "program": 39,
+  "bank": 6,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 180,
+  "name": "ORGAN BASS",
+  "program": 39,
+  "bank": 7,
+  "dsp": false,
+  "octave": 0,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 181,
+  "name": "VERSATILE ELECTRIC BASS 1",
+  "program": 33,
+  "bank": 10,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 182,
+  "name": "VERSATILE ELECTRIC BASS 2",
+  "program": 33,
+  "bank": 24,
+  "dsp": false,
+  "octave": -1,
+  "category": 5,
+  "category_name": "BASS"
+ },
+ {
+  "number": 183,
+  "name": "STEREO STRINGS",
+  "program": 48,
+  "bank": 32,
+  "dsp": true,
+  "octave": 0,
+  "category": 6,
+  "category_name": "STRINGS"
+ },
+ {
+  "number": 184,
+  "name": "MELLOW STRINGS 1",
+  "program": 49,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 6,
+  "category_name": "STRINGS"
+ },
+ {
+  "number": 185,
+  "name": "MELLOW STRINGS 2",
+  "program": 48,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 6,
+  "category_name": "STRINGS"
+ },
+ {
+  "number": 186,
+  "name": "BRIGHT STRINGS",
+  "program": 49,
+  "bank": 2,
+  "dsp": false,
+  "octave": 0,
+  "category": 6,
+  "category_name": "STRINGS"
+ },
+ {
+  "number": 187,
+  "name": "STRINGS",
+  "program": 48,
+  "bank": 3,
+  "dsp": false,
+  "octave": 0,
+  "category": 6,
+  "category_name": "STRINGS"
+ },
+ {
+  "number": 188,
+  "name": "SLOW STRINGS 1",
+  "program": 48,
+  "bank": 2,
+  "dsp": true,
+  "octave": 0,
+  "category": 6,
+  "category_name": "STRINGS"
+ },
+ {
+  "number": 189,
+  "name": "SLOW STRINGS 2",
+  "program": 49,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 6,
+  "category_name": "STRINGS"
+ },
+ {
+  "number": 190,
+  "name": "STRING ENSEMBLE",
+  "program": 48,
+  "bank": 4,
+  "dsp": false,
+  "octave": 0,
+  "category": 6,
+  "category_name": "STRINGS"
+ },
+ {
+  "number": 191,
+  "name": "WARM STRINGS",
+  "program": 48,
+  "bank": 5,
+  "dsp": false,
+  "octave": 0,
+  "category": 6,
+  "category_name": "STRINGS"
+ },
+ {
+  "number": 192,
+  "name": "PIZZICATO STRINGS",
+  "program": 45,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 6,
+  "category_name": "STRINGS"
+ },
+ {
+  "number": 193,
+  "name": "CHAMBER",
+  "program": 48,
+  "bank": 33,
+  "dsp": false,
+  "octave": 0,
+  "category": 6,
+  "category_name": "STRINGS"
+ },
+ {
+  "number": 194,
+  "name": "OCTAVE STRINGS",
+  "program": 48,
+  "bank": 34,
+  "dsp": false,
+  "octave": 0,
+  "category": 6,
+  "category_name": "STRINGS"
+ },
+ {
+  "number": 195,
+  "name": "ORCHESTRA HIT",
+  "program": 55,
+  "bank": 4,
+  "dsp": false,
+  "octave": 0,
+  "category": 6,
+  "category_name": "STRINGS"
+ },
+ {
+  "number": 196,
+  "name": "SOLO VIOLIN",
+  "program": 40,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 6,
+  "category_name": "STRINGS"
+ },
+ {
+  "number": 197,
+  "name": "VIOLIN",
+  "program": 40,
+  "bank": 33,
+  "dsp": false,
+  "octave": 0,
+  "category": 6,
+  "category_name": "STRINGS"
+ },
+ {
+  "number": 198,
+  "name": "SLOW VIOLIN",
+  "program": 40,
+  "bank": 34,
+  "dsp": false,
+  "octave": 0,
+  "category": 6,
+  "category_name": "STRINGS"
+ },
+ {
+  "number": 199,
+  "name": "VIOLA",
+  "program": 41,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 6,
+  "category_name": "STRINGS"
+ },
+ {
+  "number": 200,
+  "name": "CELLO",
+  "program": 42,
+  "bank": 32,
+  "dsp": false,
+  "octave": -1,
+  "category": 6,
+  "category_name": "STRINGS"
+ },
+ {
+  "number": 201,
+  "name": "CONTRABASS",
+  "program": 43,
+  "bank": 32,
+  "dsp": false,
+  "octave": -1,
+  "category": 6,
+  "category_name": "STRINGS"
+ },
+ {
+  "number": 202,
+  "name": "HARP",
+  "program": 46,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 6,
+  "category_name": "STRINGS"
+ },
+ {
+  "number": 203,
+  "name": "VIOLIN SECTION",
+  "program": 48,
+  "bank": 6,
+  "dsp": false,
+  "octave": 0,
+  "category": 6,
+  "category_name": "STRINGS"
+ },
+ {
+  "number": 204,
+  "name": "HARP & STRINGS",
+  "program": 49,
+  "bank": 3,
+  "dsp": false,
+  "octave": 0,
+  "category": 6,
+  "category_name": "STRINGS"
+ },
+ {
+  "number": 205,
+  "name": "STEREO BRASS",
+  "program": 61,
+  "bank": 1,
+  "dsp": true,
+  "octave": 0,
+  "category": 7,
+  "category_name": "BRASS"
+ },
+ {
+  "number": 206,
+  "name": "SOLO TRUMPET",
+  "program": 56,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 7,
+  "category_name": "BRASS"
+ },
+ {
+  "number": 207,
+  "name": "SYNTH-BRASS 1",
+  "program": 62,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 7,
+  "category_name": "BRASS"
+ },
+ {
+  "number": 208,
+  "name": "BRASS",
+  "program": 61,
+  "bank": 2,
+  "dsp": false,
+  "octave": 0,
+  "category": 7,
+  "category_name": "BRASS"
+ },
+ {
+  "number": 209,
+  "name": "BRASS SECTION 1",
+  "program": 61,
+  "bank": 3,
+  "dsp": false,
+  "octave": 0,
+  "category": 7,
+  "category_name": "BRASS"
+ },
+ {
+  "number": 210,
+  "name": "BRASS SECTION 2",
+  "program": 61,
+  "bank": 4,
+  "dsp": false,
+  "octave": 0,
+  "category": 7,
+  "category_name": "BRASS"
+ },
+ {
+  "number": 211,
+  "name": "BIG BAND BRASS",
+  "program": 61,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 7,
+  "category_name": "BRASS"
+ },
+ {
+  "number": 212,
+  "name": "HARD BRASS",
+  "program": 61,
+  "bank": 5,
+  "dsp": false,
+  "octave": 0,
+  "category": 7,
+  "category_name": "BRASS"
+ },
+ {
+  "number": 213,
+  "name": "BRASS SFZ",
+  "program": 61,
+  "bank": 33,
+  "dsp": false,
+  "octave": 0,
+  "category": 7,
+  "category_name": "BRASS"
+ },
+ {
+  "number": 214,
+  "name": "BRASS VELO.FALL",
+  "program": 61,
+  "bank": 34,
+  "dsp": false,
+  "octave": 0,
+  "category": 7,
+  "category_name": "BRASS"
+ },
+ {
+  "number": 215,
+  "name": "BRASS VELO.SHAKE",
+  "program": 61,
+  "bank": 35,
+  "dsp": false,
+  "octave": 0,
+  "category": 7,
+  "category_name": "BRASS"
+ },
+ {
+  "number": 216,
+  "name": "BRASS VELO.GLISSANDO",
+  "program": 61,
+  "bank": 36,
+  "dsp": false,
+  "octave": 0,
+  "category": 7,
+  "category_name": "BRASS"
+ },
+ {
+  "number": 217,
+  "name": "SYNTH-BRASS 2",
+  "program": 62,
+  "bank": 33,
+  "dsp": false,
+  "octave": 0,
+  "category": 7,
+  "category_name": "BRASS"
+ },
+ {
+  "number": 218,
+  "name": "SYNTH-BRASS 3",
+  "program": 62,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 7,
+  "category_name": "BRASS"
+ },
+ {
+  "number": 219,
+  "name": "SYNTH-BRASS 4",
+  "program": 62,
+  "bank": 34,
+  "dsp": false,
+  "octave": 0,
+  "category": 7,
+  "category_name": "BRASS"
+ },
+ {
+  "number": 220,
+  "name": "WARM SYNTH-BRASS",
+  "program": 62,
+  "bank": 35,
+  "dsp": false,
+  "octave": 0,
+  "category": 7,
+  "category_name": "BRASS"
+ },
+ {
+  "number": 221,
+  "name": "ANALOG SYNTH-BRASS",
+  "program": 62,
+  "bank": 36,
+  "dsp": false,
+  "octave": 0,
+  "category": 7,
+  "category_name": "BRASS"
+ },
+ {
+  "number": 222,
+  "name": "80'S SYNTH-BRASS",
+  "program": 62,
+  "bank": 2,
+  "dsp": false,
+  "octave": 0,
+  "category": 7,
+  "category_name": "BRASS"
+ },
+ {
+  "number": 223,
+  "name": "TRANCE BRASS",
+  "program": 63,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 7,
+  "category_name": "BRASS"
+ },
+ {
+  "number": 224,
+  "name": "TRUMPET 1",
+  "program": 56,
+  "bank": 32,
+  "dsp": true,
+  "octave": 0,
+  "category": 7,
+  "category_name": "BRASS"
+ },
+ {
+  "number": 225,
+  "name": "TRUMPET 2",
+  "program": 56,
+  "bank": 2,
+  "dsp": false,
+  "octave": 0,
+  "category": 7,
+  "category_name": "BRASS"
+ },
+ {
+  "number": 226,
+  "name": "MELLOW TRUMPET",
+  "program": 56,
+  "bank": 3,
+  "dsp": false,
+  "octave": 0,
+  "category": 7,
+  "category_name": "BRASS"
+ },
+ {
+  "number": 227,
+  "name": "MUTE TRUMPET",
+  "program": 59,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 7,
+  "category_name": "BRASS"
+ },
+ {
+  "number": 228,
+  "name": "TROMBONE",
+  "program": 57,
+  "bank": 32,
+  "dsp": false,
+  "octave": -1,
+  "category": 7,
+  "category_name": "BRASS"
+ },
+ {
+  "number": 229,
+  "name": "JAZZ TROMBONE",
+  "program": 57,
+  "bank": 33,
+  "dsp": false,
+  "octave": -1,
+  "category": 7,
+  "category_name": "BRASS"
+ },
+ {
+  "number": 230,
+  "name": "FRENCH HORN",
+  "program": 60,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 7,
+  "category_name": "BRASS"
+ },
+ {
+  "number": 231,
+  "name": "FRENCH HORN SECTION",
+  "program": 60,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 7,
+  "category_name": "BRASS"
+ },
+ {
+  "number": 232,
+  "name": "TUBA",
+  "program": 58,
+  "bank": 32,
+  "dsp": false,
+  "octave": -2,
+  "category": 7,
+  "category_name": "BRASS"
+ },
+ {
+  "number": 233,
+  "name": "VERSATILE BRASS 1",
+  "program": 61,
+  "bank": 8,
+  "dsp": false,
+  "octave": 0,
+  "category": 7,
+  "category_name": "BRASS"
+ },
+ {
+  "number": 234,
+  "name": "VERSATILE BRASS 2",
+  "program": 61,
+  "bank": 9,
+  "dsp": false,
+  "octave": 0,
+  "category": 7,
+  "category_name": "BRASS"
+ },
+ {
+  "number": 235,
+  "name": "SOLO TENOR SAX",
+  "program": 66,
+  "bank": 1,
+  "dsp": false,
+  "octave": -1,
+  "category": 8,
+  "category_name": "REED"
+ },
+ {
+  "number": 236,
+  "name": "SOLO ALTO SAX",
+  "program": 65,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 8,
+  "category_name": "REED"
+ },
+ {
+  "number": 237,
+  "name": "BREATHY ALTO SAX",
+  "program": 65,
+  "bank": 33,
+  "dsp": true,
+  "octave": 0,
+  "category": 8,
+  "category_name": "REED"
+ },
+ {
+  "number": 238,
+  "name": "SOLO SOPRANO SAX",
+  "program": 64,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 8,
+  "category_name": "REED"
+ },
+ {
+  "number": 239,
+  "name": "BREATHY S.SAX",
+  "program": 64,
+  "bank": 34,
+  "dsp": false,
+  "octave": 0,
+  "category": 8,
+  "category_name": "REED"
+ },
+ {
+  "number": 240,
+  "name": "SOLO OBOE",
+  "program": 68,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 8,
+  "category_name": "REED"
+ },
+ {
+  "number": 241,
+  "name": "SOLO BASSOON",
+  "program": 70,
+  "bank": 32,
+  "dsp": false,
+  "octave": -1,
+  "category": 8,
+  "category_name": "REED"
+ },
+ {
+  "number": 242,
+  "name": "ALTO SAX",
+  "program": 65,
+  "bank": 1,
+  "dsp": true,
+  "octave": 0,
+  "category": 8,
+  "category_name": "REED"
+ },
+ {
+  "number": 243,
+  "name": "TENOR SAX",
+  "program": 66,
+  "bank": 2,
+  "dsp": true,
+  "octave": -1,
+  "category": 8,
+  "category_name": "REED"
+ },
+ {
+  "number": 244,
+  "name": "BREATHY TENOR SAX",
+  "program": 66,
+  "bank": 3,
+  "dsp": true,
+  "octave": -1,
+  "category": 8,
+  "category_name": "REED"
+ },
+ {
+  "number": 245,
+  "name": "SOPRANO SAX",
+  "program": 64,
+  "bank": 33,
+  "dsp": false,
+  "octave": 0,
+  "category": 8,
+  "category_name": "REED"
+ },
+ {
+  "number": 246,
+  "name": "BARITONE SAX",
+  "program": 67,
+  "bank": 1,
+  "dsp": false,
+  "octave": -1,
+  "category": 8,
+  "category_name": "REED"
+ },
+ {
+  "number": 247,
+  "name": "HARD A.SAX",
+  "program": 65,
+  "bank": 2,
+  "dsp": false,
+  "octave": 0,
+  "category": 8,
+  "category_name": "REED"
+ },
+ {
+  "number": 248,
+  "name": "T.SAXYS",
+  "program": 66,
+  "bank": 4,
+  "dsp": false,
+  "octave": 0,
+  "category": 8,
+  "category_name": "REED"
+ },
+ {
+  "number": 249,
+  "name": "CLARINET",
+  "program": 71,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 8,
+  "category_name": "REED"
+ },
+ {
+  "number": 250,
+  "name": "VELO.CLARINET",
+  "program": 71,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 8,
+  "category_name": "REED"
+ },
+ {
+  "number": 251,
+  "name": "OBOE",
+  "program": 68,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 8,
+  "category_name": "REED"
+ },
+ {
+  "number": 252,
+  "name": "ENGLISH HORN",
+  "program": 69,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 8,
+  "category_name": "REED"
+ },
+ {
+  "number": 253,
+  "name": "SOLO FLUTE 1",
+  "program": 73,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 9,
+  "category_name": "PIPE"
+ },
+ {
+  "number": 254,
+  "name": "SOLO FLUTE 2",
+  "program": 73,
+  "bank": 33,
+  "dsp": false,
+  "octave": 0,
+  "category": 9,
+  "category_name": "PIPE"
+ },
+ {
+  "number": 255,
+  "name": "FLUTE",
+  "program": 73,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 9,
+  "category_name": "PIPE"
+ },
+ {
+  "number": 256,
+  "name": "JAZZ FLUTE",
+  "program": 73,
+  "bank": 2,
+  "dsp": false,
+  "octave": 0,
+  "category": 9,
+  "category_name": "PIPE"
+ },
+ {
+  "number": 257,
+  "name": "PICCOLO",
+  "program": 72,
+  "bank": 32,
+  "dsp": false,
+  "octave": 1,
+  "category": 9,
+  "category_name": "PIPE"
+ },
+ {
+  "number": 258,
+  "name": "RECORDER",
+  "program": 74,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 9,
+  "category_name": "PIPE"
+ },
+ {
+  "number": 259,
+  "name": "PAN FLUTE 1",
+  "program": 75,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 9,
+  "category_name": "PIPE"
+ },
+ {
+  "number": 260,
+  "name": "PAN FLUTE 2",
+  "program": 75,
+  "bank": 33,
+  "dsp": false,
+  "octave": 0,
+  "category": 9,
+  "category_name": "PIPE"
+ },
+ {
+  "number": 261,
+  "name": "WHISTLE",
+  "program": 78,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 9,
+  "category_name": "PIPE"
+ },
+ {
+  "number": 262,
+  "name": "OCARINA",
+  "program": 79,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 9,
+  "category_name": "PIPE"
+ },
+ {
+  "number": 263,
+  "name": "SHAKUHACHI",
+  "program": 77,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 9,
+  "category_name": "PIPE"
+ },
+ {
+  "number": 264,
+  "name": "PIPE SECTION",
+  "program": 72,
+  "bank": 33,
+  "dsp": false,
+  "octave": 0,
+  "category": 9,
+  "category_name": "PIPE"
+ },
+ {
+  "number": 265,
+  "name": "SUPER SAW LEAD 1",
+  "program": 81,
+  "bank": 16,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 266,
+  "name": "SUPER SAW LEAD 2",
+  "program": 81,
+  "bank": 17,
+  "dsp": true,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 267,
+  "name": "TRANCE POLY LEAD",
+  "program": 81,
+  "bank": 18,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 268,
+  "name": "TRANCE PLUCK",
+  "program": 81,
+  "bank": 38,
+  "dsp": true,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 269,
+  "name": "PROGRESSIVE PLUCK",
+  "program": 81,
+  "bank": 39,
+  "dsp": true,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 270,
+  "name": "SAW PLUCK",
+  "program": 81,
+  "bank": 40,
+  "dsp": true,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 271,
+  "name": "DIRTY PLUCK",
+  "program": 80,
+  "bank": 38,
+  "dsp": true,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 272,
+  "name": "X SYNTH LEAD 1",
+  "program": 81,
+  "bank": 7,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 273,
+  "name": "X SYNTH LEAD 2",
+  "program": 80,
+  "bank": 36,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 274,
+  "name": "X SYNTH LEAD 3",
+  "program": 81,
+  "bank": 32,
+  "dsp": true,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 275,
+  "name": "X SYNTH LEAD 4",
+  "program": 80,
+  "bank": 37,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 276,
+  "name": "X SYNTH LEAD 5",
+  "program": 81,
+  "bank": 33,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 277,
+  "name": "X SYNTH LEAD 6",
+  "program": 80,
+  "bank": 6,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 278,
+  "name": "VA SYNTH 1",
+  "program": 80,
+  "bank": 3,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 279,
+  "name": "VA SYNTH 2",
+  "program": 80,
+  "bank": 4,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 280,
+  "name": "VA SYNTH 3",
+  "program": 80,
+  "bank": 5,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 281,
+  "name": "VA SYNTH SEQ-BASS 1",
+  "program": 81,
+  "bank": 10,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 282,
+  "name": "VA SYNTH SEQ-BASS 2",
+  "program": 81,
+  "bank": 11,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 283,
+  "name": "VA SYNTH SEQ-BASS 3",
+  "program": 81,
+  "bank": 12,
+  "dsp": false,
+  "octave": -1,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 284,
+  "name": "VA SYNTH SEQUENCE 1",
+  "program": 81,
+  "bank": 13,
+  "dsp": false,
+  "octave": -1,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 285,
+  "name": "VA SYNTH SEQUENCE 2",
+  "program": 81,
+  "bank": 14,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 286,
+  "name": "SAW LEAD 1",
+  "program": 81,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 287,
+  "name": "SAW LEAD 2",
+  "program": 81,
+  "bank": 2,
+  "dsp": true,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 288,
+  "name": "SAW LEAD 3",
+  "program": 81,
+  "bank": 3,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 289,
+  "name": "MELLOW SAW LEAD",
+  "program": 81,
+  "bank": 4,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 290,
+  "name": "PULSE SAW LEAD",
+  "program": 81,
+  "bank": 5,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 291,
+  "name": "TRANCE LEAD",
+  "program": 81,
+  "bank": 6,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 292,
+  "name": "SS LEAD",
+  "program": 81,
+  "bank": 34,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 293,
+  "name": "SQUARE LEAD",
+  "program": 80,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 294,
+  "name": "SLOW SQUARE LEAD",
+  "program": 80,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 295,
+  "name": "PULSE LEAD",
+  "program": 80,
+  "bank": 33,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 296,
+  "name": "SQUARE PULSE LEAD",
+  "program": 80,
+  "bank": 34,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 297,
+  "name": "SINE LEAD",
+  "program": 80,
+  "bank": 2,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 298,
+  "name": "SYNTH SEQUENCE",
+  "program": 80,
+  "bank": 8,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 299,
+  "name": "SEQUENCE SAW",
+  "program": 81,
+  "bank": 15,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 300,
+  "name": "SEQUENCE SINE",
+  "program": 80,
+  "bank": 7,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 301,
+  "name": "8Bit ARPEGGIO",
+  "program": 80,
+  "bank": 9,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 302,
+  "name": "8Bit WAVE",
+  "program": 80,
+  "bank": 35,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 303,
+  "name": "SAW ARPEGGIO 1",
+  "program": 81,
+  "bank": 8,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 304,
+  "name": "SAW ARPEGGIO 2",
+  "program": 81,
+  "bank": 9,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 305,
+  "name": "SYNTH-VOICE LEAD",
+  "program": 85,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 306,
+  "name": "FIFTH LEAD",
+  "program": 86,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 307,
+  "name": "EDM KICK & BASS",
+  "program": 96,
+  "bank": 8,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 308,
+  "name": "EDM LAZER 1",
+  "program": 96,
+  "bank": 9,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 309,
+  "name": "EDM LAZER 2",
+  "program": 96,
+  "bank": 10,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 310,
+  "name": "EDM THEME SYNTH",
+  "program": 96,
+  "bank": 11,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 311,
+  "name": "EDM BRASS HIT",
+  "program": 96,
+  "bank": 12,
+  "dsp": false,
+  "octave": 1,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 312,
+  "name": "EDM SE BEND",
+  "program": 96,
+  "bank": 13,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 313,
+  "name": "EDM SE VOX SYNTH",
+  "program": 96,
+  "bank": 14,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 314,
+  "name": "EDM SE WHITE",
+  "program": 96,
+  "bank": 15,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 315,
+  "name": "EDM THEME HIT",
+  "program": 97,
+  "bank": 8,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 316,
+  "name": "EDM BASS",
+  "program": 97,
+  "bank": 9,
+  "dsp": false,
+  "octave": -1,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 317,
+  "name": "EDM PER SYNTH",
+  "program": 97,
+  "bank": 10,
+  "dsp": false,
+  "octave": 0,
+  "category": 10,
+  "category_name": "SYNTH"
+ },
+ {
+  "number": 318,
+  "name": "SYNTH-STRINGS 1",
+  "program": 51,
+  "bank": 32,
+  "dsp": true,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 319,
+  "name": "DIGITAL SYNTH-STR.1",
+  "program": 51,
+  "bank": 33,
+  "dsp": true,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 320,
+  "name": "PROGRESSIVE VOICE",
+  "program": 88,
+  "bank": 4,
+  "dsp": true,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 321,
+  "name": "SUPER SAW PAD",
+  "program": 90,
+  "bank": 6,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 322,
+  "name": "OLD TAPE PAD",
+  "program": 88,
+  "bank": 5,
+  "dsp": true,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 323,
+  "name": "X SYNTH PAD 1",
+  "program": 90,
+  "bank": 32,
+  "dsp": true,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 324,
+  "name": "X SYNTH PAD 2",
+  "program": 90,
+  "bank": 33,
+  "dsp": true,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 325,
+  "name": "X SYNTH PAD 3",
+  "program": 90,
+  "bank": 34,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 326,
+  "name": "SYNTH-STRINGS 2",
+  "program": 50,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 327,
+  "name": "SYNTH-STRINGS 3",
+  "program": 50,
+  "bank": 2,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 328,
+  "name": "70'S SYNTH-STR.1",
+  "program": 50,
+  "bank": 3,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 329,
+  "name": "70'S SYNTH-STR.2",
+  "program": 50,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 330,
+  "name": "80'S SYNTH-STR.1",
+  "program": 50,
+  "bank": 33,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 331,
+  "name": "80'S SYNTH-STR.2",
+  "program": 50,
+  "bank": 34,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 332,
+  "name": "DIGITAL SYNTH-STR.2",
+  "program": 50,
+  "bank": 4,
+  "dsp": true,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 333,
+  "name": "FAST SYNTH-STRINGS",
+  "program": 50,
+  "bank": 5,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 334,
+  "name": "SLOW SYNTH-STRINGS",
+  "program": 50,
+  "bank": 35,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 335,
+  "name": "CHOIR AAHS",
+  "program": 52,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 336,
+  "name": "STRINGS VOICE",
+  "program": 52,
+  "bank": 33,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 337,
+  "name": "SLOW CHOIR",
+  "program": 52,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 338,
+  "name": "VOICE DOO",
+  "program": 53,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 339,
+  "name": "VOICE UUH",
+  "program": 53,
+  "bank": 33,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 340,
+  "name": "SYNTH-VOICE",
+  "program": 54,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 341,
+  "name": "VOICE ENSEMBLE",
+  "program": 54,
+  "bank": 2,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 342,
+  "name": "SYNTH-VOICE PAD",
+  "program": 54,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 343,
+  "name": "FANTASY",
+  "program": 88,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 344,
+  "name": "NEW AGE",
+  "program": 88,
+  "bank": 2,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 345,
+  "name": "WARM PAD",
+  "program": 89,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 346,
+  "name": "FAT SAW PAD",
+  "program": 89,
+  "bank": 2,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 347,
+  "name": "SOFT PAD",
+  "program": 89,
+  "bank": 3,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 348,
+  "name": "SYNTH-PAD",
+  "program": 90,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 349,
+  "name": "VA SYNTH-PAD",
+  "program": 90,
+  "bank": 2,
+  "dsp": true,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 350,
+  "name": "POLY SAW",
+  "program": 90,
+  "bank": 3,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 351,
+  "name": "BRIGHT SAW PAD 1",
+  "program": 90,
+  "bank": 4,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 352,
+  "name": "BRIGHT SAW PAD 2",
+  "program": 90,
+  "bank": 5,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 353,
+  "name": "GLASS PAD",
+  "program": 92,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 354,
+  "name": "BOTTLE PAD",
+  "program": 92,
+  "bank": 33,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 355,
+  "name": "ETHNIC PAD",
+  "program": 93,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 356,
+  "name": "SWEEP PAD",
+  "program": 95,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 357,
+  "name": "WOOD PAD",
+  "program": 96,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 358,
+  "name": "SOUND TRACK",
+  "program": 97,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 359,
+  "name": "VIBRAPHONE BELL",
+  "program": 98,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 360,
+  "name": "ATMOSPHERE PAD",
+  "program": 99,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 361,
+  "name": "STEEL PAD",
+  "program": 99,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 362,
+  "name": "BRIGHTNESS",
+  "program": 100,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 363,
+  "name": "BRIGHT BELL PAD",
+  "program": 100,
+  "bank": 2,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 364,
+  "name": "SPACE PAD",
+  "program": 103,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 365,
+  "name": "EDM PAD",
+  "program": 88,
+  "bank": 3,
+  "dsp": true,
+  "octave": 0,
+  "category": 11,
+  "category_name": "PAD/CHOIR"
+ },
+ {
+  "number": 366,
+  "name": "SITAR 1",
+  "program": 104,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 367,
+  "name": "SITAR 2",
+  "program": 104,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 368,
+  "name": "SITAR 3",
+  "program": 104,
+  "bank": 33,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 369,
+  "name": "SITAR PAD",
+  "program": 104,
+  "bank": 34,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 370,
+  "name": "TANPURA 1",
+  "program": 104,
+  "bank": 2,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 371,
+  "name": "TANPURA 2",
+  "program": 104,
+  "bank": 35,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 372,
+  "name": "HARMONIUM 1",
+  "program": 20,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 373,
+  "name": "HARMONIUM 2",
+  "program": 20,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 374,
+  "name": "SANTUR 1",
+  "program": 15,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 375,
+  "name": "SANTUR 2",
+  "program": 15,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 376,
+  "name": "SAROD 1",
+  "program": 105,
+  "bank": 10,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 377,
+  "name": "SAROD 2",
+  "program": 105,
+  "bank": 41,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 378,
+  "name": "SARANGI 1",
+  "program": 110,
+  "bank": 8,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 379,
+  "name": "SARANGI 2",
+  "program": 110,
+  "bank": 43,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 380,
+  "name": "VEENA 1",
+  "program": 104,
+  "bank": 36,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 381,
+  "name": "VEENA 2",
+  "program": 104,
+  "bank": 37,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 382,
+  "name": "SHANAI",
+  "program": 111,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 383,
+  "name": "BANSURI",
+  "program": 72,
+  "bank": 9,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 384,
+  "name": "PUNGI",
+  "program": 111,
+  "bank": 8,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 385,
+  "name": "TABLA",
+  "program": 116,
+  "bank": 41,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 386,
+  "name": "CAVAQUINHO",
+  "program": 104,
+  "bank": 38,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 387,
+  "name": "VIOLA CAIPIRA",
+  "program": 104,
+  "bank": 39,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 388,
+  "name": "BERIMBAU",
+  "program": 104,
+  "bank": 40,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 389,
+  "name": "PANDEIRO",
+  "program": 116,
+  "bank": 40,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 390,
+  "name": "ANGKLUNG TREM.",
+  "program": 12,
+  "bank": 40,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 391,
+  "name": "GENDER",
+  "program": 11,
+  "bank": 40,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 392,
+  "name": "CAK",
+  "program": 25,
+  "bank": 12,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 393,
+  "name": "CUK",
+  "program": 24,
+  "bank": 40,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 394,
+  "name": "CELLO FINGERED",
+  "program": 32,
+  "bank": 12,
+  "dsp": false,
+  "octave": -1,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 395,
+  "name": "SASANDO",
+  "program": 46,
+  "bank": 40,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 396,
+  "name": "SHORT SULING",
+  "program": 77,
+  "bank": 40,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 397,
+  "name": "SULING BAMBOO 1",
+  "program": 77,
+  "bank": 41,
+  "dsp": false,
+  "octave": 1,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 398,
+  "name": "SALUANG",
+  "program": 77,
+  "bank": 43,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 399,
+  "name": "SULING BAMBOO 2",
+  "program": 77,
+  "bank": 42,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 400,
+  "name": "ER HU 1",
+  "program": 110,
+  "bank": 9,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 401,
+  "name": "ER HU 2",
+  "program": 110,
+  "bank": 40,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 402,
+  "name": "ER HU 3",
+  "program": 110,
+  "bank": 41,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 403,
+  "name": "ER HU 4",
+  "program": 110,
+  "bank": 42,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 404,
+  "name": "YANG QIN 1",
+  "program": 15,
+  "bank": 2,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 405,
+  "name": "YANG QIN 2",
+  "program": 15,
+  "bank": 3,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 406,
+  "name": "YANG QIN 3",
+  "program": 15,
+  "bank": 34,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 407,
+  "name": "ZHENG 1",
+  "program": 107,
+  "bank": 8,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 408,
+  "name": "ZHENG 2",
+  "program": 107,
+  "bank": 40,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 409,
+  "name": "PI PA 1",
+  "program": 105,
+  "bank": 8,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 410,
+  "name": "PI PA 2",
+  "program": 105,
+  "bank": 9,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 411,
+  "name": "PI PA 3",
+  "program": 105,
+  "bank": 40,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 412,
+  "name": "CHINESE HARP",
+  "program": 46,
+  "bank": 33,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 413,
+  "name": "DI ZI 1",
+  "program": 72,
+  "bank": 8,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 414,
+  "name": "DI ZI 2",
+  "program": 72,
+  "bank": 40,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 415,
+  "name": "XIAO",
+  "program": 77,
+  "bank": 8,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 416,
+  "name": "SHENG 1",
+  "program": 109,
+  "bank": 8,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 417,
+  "name": "SHENG 2",
+  "program": 109,
+  "bank": 40,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 418,
+  "name": "SUO NA 1",
+  "program": 111,
+  "bank": 10,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 419,
+  "name": "SUO NA 2",
+  "program": 111,
+  "bank": 32,
+  "dsp": true,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 420,
+  "name": "OUD 1",
+  "program": 105,
+  "bank": 11,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 421,
+  "name": "OUD 2",
+  "program": 105,
+  "bank": 42,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 422,
+  "name": "SAZ",
+  "program": 15,
+  "bank": 4,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 423,
+  "name": "KANUN 1",
+  "program": 15,
+  "bank": 5,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 424,
+  "name": "KANUN 2",
+  "program": 15,
+  "bank": 33,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 425,
+  "name": "BOUZOUKI",
+  "program": 105,
+  "bank": 43,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 426,
+  "name": "RABAB",
+  "program": 105,
+  "bank": 44,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 427,
+  "name": "KEMENCHE",
+  "program": 110,
+  "bank": 44,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 428,
+  "name": "NEY 1",
+  "program": 72,
+  "bank": 10,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 429,
+  "name": "NEY 2",
+  "program": 72,
+  "bank": 41,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 430,
+  "name": "ZURNA",
+  "program": 111,
+  "bank": 9,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 431,
+  "name": "ARABIC ORGAN",
+  "program": 16,
+  "bank": 7,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 432,
+  "name": "ARABIC STRINGS",
+  "program": 48,
+  "bank": 7,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 433,
+  "name": "BANJO",
+  "program": 105,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 434,
+  "name": "MUTE BANJO",
+  "program": 105,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 435,
+  "name": "STEEL DRUMS",
+  "program": 114,
+  "bank": 1,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 436,
+  "name": "FIDDLE",
+  "program": 110,
+  "bank": 32,
+  "dsp": false,
+  "octave": 0,
+  "category": 12,
+  "category_name": "ETHNIC"
+ },
+ {
+  "number": 437,
+  "name": "GM PIANO 1",
+  "program": 0,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 438,
+  "name": "GM PIANO 2",
+  "program": 1,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 439,
+  "name": "GM ELEC.GRAND PIANO",
+  "program": 2,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 440,
+  "name": "GM HONKY-TONK",
+  "program": 3,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 441,
+  "name": "GM E.PIANO 1",
+  "program": 4,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 442,
+  "name": "GM E.PIANO 2",
+  "program": 5,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 443,
+  "name": "GM HARPSICHORD",
+  "program": 6,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 444,
+  "name": "GM CLAVI",
+  "program": 7,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 445,
+  "name": "GM CELESTA",
+  "program": 8,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 446,
+  "name": "GM GLOCKENSPIEL",
+  "program": 9,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 447,
+  "name": "GM MUSIC BOX",
+  "program": 10,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 448,
+  "name": "GM VIBRAPHONE",
+  "program": 11,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 449,
+  "name": "GM MARIMBA",
+  "program": 12,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 450,
+  "name": "GM XYLOPHONE",
+  "program": 13,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 451,
+  "name": "GM TUBULAR BELL",
+  "program": 14,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 452,
+  "name": "GM DULCIMER",
+  "program": 15,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 453,
+  "name": "GM ORGAN 1",
+  "program": 16,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 454,
+  "name": "GM ORGAN 2",
+  "program": 17,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 455,
+  "name": "GM ORGAN 3",
+  "program": 18,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 456,
+  "name": "GM PIPE ORGAN",
+  "program": 19,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 457,
+  "name": "GM REED ORGAN",
+  "program": 20,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 458,
+  "name": "GM ACCORDION",
+  "program": 21,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 459,
+  "name": "GM HARMONICA",
+  "program": 22,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 460,
+  "name": "GM BANDONEON",
+  "program": 23,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 461,
+  "name": "GM NYLON STR.GUITAR",
+  "program": 24,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 462,
+  "name": "GM STEEL STR.GUITAR",
+  "program": 25,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 463,
+  "name": "GM JAZZ GUITAR",
+  "program": 26,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 464,
+  "name": "GM CLEAN GUITAR",
+  "program": 27,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 465,
+  "name": "GM MUTE GUITAR",
+  "program": 28,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 466,
+  "name": "GM OVERDRIVE GT",
+  "program": 29,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 467,
+  "name": "GM DISTORTION GT",
+  "program": 30,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 468,
+  "name": "GM GT HARMONICS",
+  "program": 31,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 469,
+  "name": "GM ACOUSTIC BASS",
+  "program": 32,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 470,
+  "name": "GM FINGERED BASS",
+  "program": 33,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 471,
+  "name": "GM PICKED BASS",
+  "program": 34,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 472,
+  "name": "GM FRETLESS BASS",
+  "program": 35,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 473,
+  "name": "GM SLAP BASS 1",
+  "program": 36,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 474,
+  "name": "GM SLAP BASS 2",
+  "program": 37,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 475,
+  "name": "GM SYNTH-BASS 1",
+  "program": 38,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 476,
+  "name": "GM SYNTH-BASS 2",
+  "program": 39,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 477,
+  "name": "GM VIOLIN",
+  "program": 40,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 478,
+  "name": "GM VIOLA",
+  "program": 41,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 479,
+  "name": "GM CELLO",
+  "program": 42,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 480,
+  "name": "GM CONTRABASS",
+  "program": 43,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 481,
+  "name": "GM TREMOLO STRINGS",
+  "program": 44,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 482,
+  "name": "GM PIZZICATO",
+  "program": 45,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 483,
+  "name": "GM HARP",
+  "program": 46,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 484,
+  "name": "GM TIMPANI",
+  "program": 47,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 485,
+  "name": "GM STRINGS 1",
+  "program": 48,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 486,
+  "name": "GM STRINGS 2",
+  "program": 49,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 487,
+  "name": "GM SYNTH-STRINGS 1",
+  "program": 50,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 488,
+  "name": "GM SYNTH-STRINGS 2",
+  "program": 51,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 489,
+  "name": "GM CHOIR AAHS",
+  "program": 52,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 490,
+  "name": "GM VOICE DOO",
+  "program": 53,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 491,
+  "name": "GM SYNTH-VOICE",
+  "program": 54,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 492,
+  "name": "GM ORCHESTRA HIT",
+  "program": 55,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 493,
+  "name": "GM TRUMPET",
+  "program": 56,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 494,
+  "name": "GM TROMBONE",
+  "program": 57,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 495,
+  "name": "GM TUBA",
+  "program": 58,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 496,
+  "name": "GM MUTE TRUMPET",
+  "program": 59,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 497,
+  "name": "GM FRENCH HORN",
+  "program": 60,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 498,
+  "name": "GM BRASS",
+  "program": 61,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 499,
+  "name": "GM SYNTH-BRASS 1",
+  "program": 62,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 500,
+  "name": "GM SYNTH-BRASS 2",
+  "program": 63,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 501,
+  "name": "GM SOPRANO SAX",
+  "program": 64,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 502,
+  "name": "GM ALTO SAX",
+  "program": 65,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 503,
+  "name": "GM TENOR SAX",
+  "program": 66,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 504,
+  "name": "GM BARITONE SAX",
+  "program": 67,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 505,
+  "name": "GM OBOE",
+  "program": 68,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 506,
+  "name": "GM ENGLISH HORN",
+  "program": 69,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 507,
+  "name": "GM BASSOON",
+  "program": 70,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 508,
+  "name": "GM CLARINET",
+  "program": 71,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 509,
+  "name": "GM PICCOLO",
+  "program": 72,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 510,
+  "name": "GM FLUTE",
+  "program": 73,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 511,
+  "name": "GM RECORDER",
+  "program": 74,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 512,
+  "name": "GM PAN FLUTE",
+  "program": 75,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 513,
+  "name": "GM BOTTLE BLOW",
+  "program": 76,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 514,
+  "name": "GM SHAKUHACHI",
+  "program": 77,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 515,
+  "name": "GM WHISTLE",
+  "program": 78,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 516,
+  "name": "GM OCARINA",
+  "program": 79,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 517,
+  "name": "GM SQUARE LEAD",
+  "program": 80,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 518,
+  "name": "GM SAW LEAD",
+  "program": 81,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 519,
+  "name": "GM CALLIOPE",
+  "program": 82,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 520,
+  "name": "GM CHIFF LEAD",
+  "program": 83,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 521,
+  "name": "GM CHARANG",
+  "program": 84,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 522,
+  "name": "GM VOICE LEAD",
+  "program": 85,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 523,
+  "name": "GM FIFTH LEAD",
+  "program": 86,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 524,
+  "name": "GM BASS+LEAD",
+  "program": 87,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 525,
+  "name": "GM FANTASY",
+  "program": 88,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 526,
+  "name": "GM WARM PAD",
+  "program": 89,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 527,
+  "name": "GM POLYSYNTH",
+  "program": 90,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 528,
+  "name": "GM SPACE CHOIR",
+  "program": 91,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 529,
+  "name": "GM BOWED GLASS",
+  "program": 92,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 530,
+  "name": "GM METAL PAD",
+  "program": 93,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 531,
+  "name": "GM HALO PAD",
+  "program": 94,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 532,
+  "name": "GM SWEEP PAD",
+  "program": 95,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 533,
+  "name": "GM RAIN DROP",
+  "program": 96,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 534,
+  "name": "GM SOUND TRACK",
+  "program": 97,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 535,
+  "name": "GM CRYSTAL",
+  "program": 98,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 536,
+  "name": "GM ATMOSPHERE",
+  "program": 99,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 537,
+  "name": "GM BRIGHTNESS",
+  "program": 100,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 538,
+  "name": "GM GOBLINS",
+  "program": 101,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 539,
+  "name": "GM ECHOES",
+  "program": 102,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 540,
+  "name": "GM SF",
+  "program": 103,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 541,
+  "name": "GM SITAR",
+  "program": 104,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 542,
+  "name": "GM BANJO",
+  "program": 105,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 543,
+  "name": "GM SHAMISEN",
+  "program": 106,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 544,
+  "name": "GM KOTO",
+  "program": 107,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 545,
+  "name": "GM THUMB PIANO",
+  "program": 108,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 546,
+  "name": "GM BAGPIPE",
+  "program": 109,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 547,
+  "name": "GM FIDDLE",
+  "program": 110,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 548,
+  "name": "GM SHANAI",
+  "program": 111,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 549,
+  "name": "GM TINKLE BELL",
+  "program": 112,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 550,
+  "name": "GM AGOGO",
+  "program": 113,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 551,
+  "name": "GM STEEL DRUMS",
+  "program": 114,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 552,
+  "name": "GM WOOD BLOCK",
+  "program": 115,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 553,
+  "name": "GM TAIKO",
+  "program": 116,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 554,
+  "name": "GM MELODIC TOM",
+  "program": 117,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 555,
+  "name": "GM SYNTH-DRUM",
+  "program": 118,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 556,
+  "name": "GM REVERSE CYMBAL",
+  "program": 119,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 557,
+  "name": "GM GT FRET NOISE",
+  "program": 120,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 558,
+  "name": "GM BREATH NOISE",
+  "program": 121,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 559,
+  "name": "GM SEASHORE",
+  "program": 122,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 560,
+  "name": "GM BIRD",
+  "program": 123,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 561,
+  "name": "GM TELEPHONE",
+  "program": 124,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 562,
+  "name": "GM HELICOPTER",
+  "program": 125,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 563,
+  "name": "GM APPLAUSE",
+  "program": 126,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 564,
+  "name": "GM GUNSHOT",
+  "program": 127,
+  "bank": 0,
+  "dsp": false,
+  "octave": 0,
+  "category": 13,
+  "category_name": "GM TONES"
+ },
+ {
+  "number": 565,
+  "name": "STANDARD SET 1",
+  "program": 0,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 566,
+  "name": "STANDARD SET 2",
+  "program": 1,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 567,
+  "name": "STANDARD SET 3",
+  "program": 2,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 568,
+  "name": "STANDARD SET 4",
+  "program": 3,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 569,
+  "name": "STANDARD SET 5",
+  "program": 4,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 570,
+  "name": "DANCE SET 1",
+  "program": 26,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 571,
+  "name": "DANCE SET 2",
+  "program": 27,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 572,
+  "name": "DANCE SET 3",
+  "program": 28,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 573,
+  "name": "DANCE SET 4",
+  "program": 29,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 574,
+  "name": "DANCE SET 5",
+  "program": 34,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 575,
+  "name": "DANCE SET 6",
+  "program": 35,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 576,
+  "name": "TRANCE SET",
+  "program": 31,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 577,
+  "name": "HIP-HOP SET",
+  "program": 9,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 578,
+  "name": "ROOM SET",
+  "program": 8,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 579,
+  "name": "POWER SET",
+  "program": 16,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 580,
+  "name": "ROCK SET",
+  "program": 17,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 581,
+  "name": "ELECTRONIC SET",
+  "program": 24,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 582,
+  "name": "DRUM MACHINE SET 1",
+  "program": 25,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 583,
+  "name": "DRUM MACHINE SET 2",
+  "program": 30,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 584,
+  "name": "DRUM MACHINE SET 3",
+  "program": 33,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 585,
+  "name": "JAZZ SET",
+  "program": 32,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 586,
+  "name": "BRUSH SET",
+  "program": 40,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 587,
+  "name": "ORCHESTRA SET",
+  "program": 48,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 588,
+  "name": "LATIN SET 1",
+  "program": 49,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 589,
+  "name": "LATIN SET 2",
+  "program": 50,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 590,
+  "name": "INDONESIAN SET",
+  "program": 53,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 591,
+  "name": "INDIAN SET",
+  "program": 54,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 592,
+  "name": "ARABIC SET",
+  "program": 52,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 593,
+  "name": "CHINESE SET",
+  "program": 51,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 594,
+  "name": "SFX SET 1",
+  "program": 60,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 595,
+  "name": "SFX SET 2",
+  "program": 61,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 596,
+  "name": "SNARE SET 1",
+  "program": 64,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 597,
+  "name": "SNARE SET 2",
+  "program": 65,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 598,
+  "name": "KICK SET",
+  "program": 66,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 599,
+  "name": "CYMBAL SET",
+  "program": 67,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ },
+ {
+  "number": 600,
+  "name": "TOM SET",
+  "program": 68,
+  "bank": 120,
+  "dsp": false,
+  "octave": 0,
+  "category": 14,
+  "category_name": "DRUM SET"
+ }
+]
