@@ -47,7 +47,8 @@ levar o pendrive ao teclado a cada tentativa.
   tempo e botões INTRO, VAR, FILL, ENDING e SYNCHRO.
 - **Motor ao vivo** com libfluidsynth e GStreamer: andamento, acorde, mixagem e
   timbres mudam na hora, sem preparar áudio e sem emenda no loop.
-- **Seletor de acorde** com as 12 tônicas e 8 tipos.
+- **Seletor de acorde** com os 12 acordes maiores e os menores das notas
+  naturais (Cm, Dm, Em, Fm, Gm, Am, Bm).
 - Controle de **andamento** para testar o ritmo mais devagar ou mais rápido
   (não altera o arquivo).
 - Volume geral independente do volume gravado no ritmo.

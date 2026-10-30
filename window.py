@@ -15,7 +15,7 @@ gi.require_version("Gdk", "4.0")
 from gi.repository import Adw, Gdk, Gio, GLib, Gtk, Pango  # noqa: E402
 
 from ac7 import AC7_PPQ, AC7Error, Rhythm, Section, load_ac7  # noqa: E402
-from arranger import CHORD_QUALITIES, NOTE_NAMES, Chord  # noqa: E402
+from arranger import NOTE_NAMES, Chord  # noqa: E402
 from audio import AudioError, PlaybackEngine, Position  # noqa: E402
 from constants import APP_ID, APP_NAME  # noqa: E402
 from instruments import InstrumentDialog  # noqa: E402
@@ -40,6 +40,8 @@ PAD_ROWS = (
      (10, "FILL 3"), (11, "FILL 4"), (12, "ENDING 2")),
 )
 PART_HIT_TICKS = 14
+MAJOR_CHORDS = tuple(Chord(root) for root in range(len(NOTE_NAMES)))
+MINOR_CHORDS = tuple(Chord(root, "m") for root in (0, 2, 4, 5, 7, 9, 11))
 
 
 def load_config() -> dict:
@@ -79,8 +81,7 @@ class TonetuneWindow(Adw.ApplicationWindow):
         self.instruments: dict[int, Tone] = {}
         self.volumes: dict[int, int] = {}
         self._dialog = None
-        self._root = 0
-        self._quality = ""
+        self.chord = Chord()
         self._part_ticks: dict[int, list[int]] = {}
         self._timer_id: int | None = None
         self._reload_source: int | None = None
@@ -427,33 +428,20 @@ class TonetuneWindow(Adw.ApplicationWindow):
 
     def _build_chords(self) -> Gtk.Widget:
         box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
-        roots = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=3,
-                        homogeneous=True)
         first = None
-        for root, name in enumerate(NOTE_NAMES):
-            button = Gtk.ToggleButton(label=name)
-            button.add_css_class("chord-key")
-            button.set_focusable(False)
-            button.set_group(first)
-            first = first or button
-            button.set_active(root == 0)
-            button.connect("clicked", self._on_root_clicked, root)
-            roots.append(button)
-        box.append(roots)
-
-        qualities = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=3,
-                            homogeneous=True)
-        first = None
-        for quality in CHORD_QUALITIES:
-            button = Gtk.ToggleButton(label=quality or "maior")
-            button.add_css_class("chord-key")
-            button.set_focusable(False)
-            button.set_group(first)
-            first = first or button
-            button.set_active(quality == "")
-            button.connect("clicked", self._on_quality_clicked, quality)
-            qualities.append(button)
-        box.append(qualities)
+        for chords in (MAJOR_CHORDS, MINOR_CHORDS):
+            row = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=3,
+                          homogeneous=True)
+            for chord in chords:
+                button = Gtk.ToggleButton(label=chord.name)
+                button.add_css_class("chord-key")
+                button.set_focusable(False)
+                button.set_group(first)
+                first = first or button
+                button.set_active(chord == self.chord)
+                button.connect("clicked", self._on_chord_clicked, chord)
+                row.append(button)
+            box.append(row)
         return box
 
     def _build_pattern_panel(self) -> Gtk.Widget:
@@ -625,7 +613,7 @@ class TonetuneWindow(Adw.ApplicationWindow):
         self.name_label.set_tooltip_text(str(self.rhythm.path))
         self.window_title.set_subtitle(self.rhythm.path.name)
         self.lcd_tempo.set_label(str(int(self.tempo_spin.get_value())))
-        self.lcd_chord.set_label(Chord(self._root, self._quality).name)
+        self.lcd_chord.set_label(self.chord.name)
         for index, button in self.pads.items():
             section = self.rhythm.section(index)
             button.set_sensitive(section is not None and not section.is_empty)
@@ -847,16 +835,8 @@ class TonetuneWindow(Adw.ApplicationWindow):
         if button.get_active():
             self._set_status("Synchro: escolha um acorde para começar.")
 
-    def _on_root_clicked(self, _button, root: int) -> None:
-        self._root = root
-        self._apply_chord()
-
-    def _on_quality_clicked(self, _button, quality: str) -> None:
-        self._quality = quality
-        self._apply_chord()
-
-    def _apply_chord(self) -> None:
-        chord = Chord(self._root, self._quality)
+    def _on_chord_clicked(self, _button, chord: Chord) -> None:
+        self.chord = chord
         self.engine.live.set_chord(chord)
         self.lcd_chord.set_label(chord.name)
         if self.synchro_button.get_active() and not self.engine.active:
