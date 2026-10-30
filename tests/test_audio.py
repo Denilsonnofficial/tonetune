@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import copy
 import shutil
 import sys
 import tempfile
@@ -8,7 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from ac7 import load_ac7  # noqa: E402
+from ac7 import Mixer, load_ac7  # noqa: E402
 from audio import AudioError, Renderer, SOUNDFONTS, build_midi  # noqa: E402
 
 DEMO = Path(__file__).resolve().parents[1] / "examples" / "DEMO.AC7"
@@ -32,6 +33,16 @@ class MidiBuildTest(unittest.TestCase):
         with self.assertRaises(AudioError):
             build_midi(self.rhythm, self.section, self.rhythm.tempo,
                        muted=set(range(1, 9)))
+
+    def test_zero_volume_part_is_silent(self) -> None:
+        section = copy.deepcopy(self.section)
+        mixer = section.mixer_for_part(5)
+        section.mixers[5] = Mixer(mixer.patch, mixer.bank, 0,
+                                  mixer.pan, mixer.reverb, mixer.chorus)
+        midi = build_midi(self.rhythm, section, self.rhythm.tempo)
+        channels = {message.channel for track in midi.tracks
+                    for message in track if message.type == "program_change"}
+        self.assertNotIn(4, channels)
 
 
 @unittest.skipUnless(shutil.which("fluidsynth")
