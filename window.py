@@ -862,11 +862,15 @@ class TonetuneWindow(Adw.ApplicationWindow):
         row.set_section(self.current_section)
 
     def _reset_mix(self) -> None:
-        if not self.instruments and not self.volumes:
+        if (not self.instruments and not self.volumes
+                and not self.muted and not self.solo):
             return
         self.instruments.clear()
         self.volumes.clear()
+        self.muted.clear()
+        self.solo.clear()
         for part in range(1, 9):
+            self.part_rows[part].set_state(False, False)
             self._refresh_part_row(part)
         if self.engine.active or self._busy:
             self._schedule_restart()
