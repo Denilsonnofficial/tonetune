@@ -166,11 +166,15 @@ def _bar_counts(section: Section) -> list[int]:
 
 
 class PartRow(Gtk.Box):
-    def __init__(self, part: int, on_change) -> None:
-        super().__init__(orientation=Gtk.Orientation.VERTICAL, spacing=4)
+    def __init__(self, part: int, on_change, on_volume, on_instrument) -> None:
+        super().__init__(orientation=Gtk.Orientation.VERTICAL, spacing=2)
         self.part = part
         self.on_change = on_change
+        self.on_volume = on_volume
+        self.on_instrument = on_instrument
         self._updating = False
+        self._tone_text = ""
+        self._section_count = 0
         self.add_css_class("part-row")
         self.color = PART_COLORS[part - 1]
 
@@ -180,24 +184,45 @@ class PartRow(Gtk.Box):
         text = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
         text.set_hexpand(True)
         self.name = Gtk.Label(xalign=0)
-        self.name.set_markup(
-            f"<b>{part}. {_part_name(part)}</b>")
+        self.name.set_markup(f"<b>{part}. {_part_name(part)}</b>")
         self.name.add_css_class("part-name")
         text.append(self.name)
-        self.tone = Gtk.Label(xalign=0)
-        self.tone.add_css_class("caption")
-        self.tone.add_css_class("dim-label")
-        self.tone.set_ellipsize(Pango.EllipsizeMode.END)
-        text.append(self.tone)
+
+        self.tone_button = Gtk.Button()
+        self.tone_button.add_css_class("flat")
+        self.tone_button.add_css_class("tone-button")
+        self.tone_button.set_halign(Gtk.Align.FILL)
+        self.tone_button.set_hexpand(True)
+        self.tone_button.set_tooltip_text(
+            "Trocar o instrumento desta parte na prévia")
+        self.tone_button.connect(
+            "clicked", lambda _button: self.on_instrument(self.part))
+        tone_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=4)
+        self.tone_label = Gtk.Label(xalign=0)
+        self.tone_label.add_css_class("caption")
+        self.tone_label.add_css_class("dim-label")
+        self.tone_label.set_ellipsize(Pango.EllipsizeMode.END)
+        self.tone_label.set_hexpand(True)
+        tone_box.append(self.tone_label)
+        self.override_dot = Gtk.Label(label="●")
+        self.override_dot.add_css_class("override-dot")
+        self.override_dot.set_tooltip_text("Instrumento alterado na prévia")
+        self.override_dot.set_visible(False)
+        tone_box.append(self.override_dot)
+        chevron = Gtk.Image.new_from_icon_name("pan-end-symbolic")
+        chevron.set_pixel_size(10)
+        chevron.add_css_class("dim-label")
+        tone_box.append(chevron)
+        self.tone_button.set_child(tone_box)
+        text.append(self.tone_button)
         top.append(text)
 
-        self.mute = Gtk.ToggleButton(label="M")
-        self.mute.add_css_class("flat")
-        self.mute.add_css_class("part-mute")
-        self.mute.set_tooltip_text("Mutar esta parte")
-        self.mute.set_valign(Gtk.Align.CENTER)
-        self.mute.connect("toggled", self._changed)
-        top.append(self.mute)
+        self.enabled = Gtk.Switch()
+        self.enabled.set_active(True)
+        self.enabled.set_valign(Gtk.Align.CENTER)
+        self.enabled.set_tooltip_text("Ligar/desligar esta parte")
+        self.enabled.connect("notify::active", self._changed)
+        top.append(self.enabled)
 
         self.solo = Gtk.ToggleButton(label="S")
         self.solo.add_css_class("flat")
@@ -209,46 +234,89 @@ class PartRow(Gtk.Box):
 
         self.append(top)
 
-        self.level = Gtk.ProgressBar()
-        self.level.set_show_text(False)
-        self.level.set_size_request(-1, 3)
-        self.level.add_css_class("part-volume")
-        self.append(self.level)
+        volume_row = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL,
+                             spacing=6)
+        self.volume_scale = Gtk.Scale.new_with_range(
+            Gtk.Orientation.HORIZONTAL, 0, 127, 1)
+        self.volume_scale.set_draw_value(False)
+        self.volume_scale.set_hexpand(True)
+        self.volume_scale.set_size_request(-1, 16)
+        self.volume_scale.add_css_class("part-volume-scale")
+        self.volume_scale.set_tooltip_text(
+            "Volume desta parte na prévia (não altera o AC7)")
+        self.volume_scale.connect("value-changed", self._volume_changed)
+        volume_row.append(self.volume_scale)
+        self.volume_value = Gtk.Label(label="100")
+        self.volume_value.set_width_chars(3)
+        self.volume_value.set_xalign(1)
+        self.volume_value.add_css_class("caption")
+        self.volume_value.add_css_class("dim-label")
+        volume_row.append(self.volume_value)
+        self.append(volume_row)
 
-        self.notes = Gtk.Label(xalign=0)
-        self.notes.add_css_class("caption")
-        self.notes.add_css_class("dim-label")
-        self.append(self.notes)
-
-    def _changed(self, _button) -> None:
+    def _changed(self, *_args) -> None:
         if self._updating:
             return
+        self._update_mute_visual()
         self.on_change(self.part)
 
-    def set_mixer(self, mixer) -> None:
+    def _update_mute_visual(self) -> None:
+        if self.enabled.get_active():
+            self.remove_css_class("part-muted")
+        else:
+            self.add_css_class("part-muted")
+
+    def _volume_changed(self, scale) -> None:
+        value = int(round(scale.get_value()))
+        self.volume_value.set_label(str(value))
+        if not self._updating:
+            self.volume_value.add_css_class("volume-override")
+            self.on_volume(self.part, value)
+
+    def set_mixer(self, mixer, override_tone=None, volume: int | None = None,
+                  volume_overridden: bool = False) -> None:
         self._updating = True
-        text = detail(mixer.patch, mixer.bank, self.part)
-        if mixer.volume == 0:
-            text = f"mudo no AC7 · {text}"
-        self.tone.set_label(text)
-        self.tone.set_tooltip_text(text)
-        self.level.set_fraction(max(0, min(127, mixer.volume)) / 127)
+        if override_tone is not None:
+            text = override_tone.name
+        else:
+            text = detail(mixer.patch, mixer.bank, self.part)
+        self._tone_text = text
+        self.tone_label.set_label(text)
+        self._update_tooltip()
+        self.override_dot.set_visible(override_tone is not None)
+        value = mixer.volume if volume is None else int(volume)
+        value = max(0, min(127, value))
+        self.volume_scale.set_value(value)
+        self.volume_value.set_label(str(value))
+        if volume_overridden:
+            self.volume_value.add_css_class("volume-override")
+        else:
+            self.volume_value.remove_css_class("volume-override")
         self._updating = False
 
     def set_section(self, section: Section) -> None:
         count = section.note_count_for_part(self.part)
+        self._section_count = count
         if count:
-            self.notes.set_label(f"{count} notas nesta seção")
             self.remove_css_class("part-inactive")
         else:
-            self.notes.set_label("sem notas nesta seção")
             self.add_css_class("part-inactive")
+        self._update_tooltip()
+
+    def _update_tooltip(self) -> None:
+        if self._section_count:
+            notes = f"{self._section_count} notas nesta seção"
+        else:
+            notes = "sem notas nesta seção"
+        self.tone_button.set_tooltip_text(
+            f"{self._tone_text} — {notes} — clique para trocar")
 
     def set_state(self, muted: bool, soloed: bool) -> None:
         self._updating = True
-        self.mute.set_active(muted)
+        self.enabled.set_active(not muted)
         self.solo.set_active(soloed)
         self._updating = False
+        self._update_mute_visual()
 
 
 def _part_name(part: int) -> str:

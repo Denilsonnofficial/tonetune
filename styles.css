@@ -115,7 +115,7 @@
 }
 
 .part-row {
-  padding: 5px 8px;
+  padding: 3px 8px;
   border-radius: 10px;
 }
 
@@ -127,11 +127,14 @@
   opacity: 0.48;
 }
 
+.part-muted {
+  opacity: 0.55;
+}
+
 .part-name {
   font-size: 13px;
 }
 
-.part-mute,
 .part-solo {
   min-width: 28px;
   min-height: 28px;
@@ -141,30 +144,50 @@
   font-size: 11px;
 }
 
-.part-mute:checked {
-  background-color: #e5484d;
-  color: #ffffff;
-}
-
 .part-solo:checked {
   background-color: #f5a524;
   color: #1b1b1b;
 }
 
-.part-volume {
-  min-height: 3px;
+.part-row switch {
+  margin: 0 1px;
 }
 
-.part-volume > trough {
-  min-height: 3px;
+.tone-button {
+  padding: 0 4px;
+  min-height: 20px;
+  border-radius: 6px;
+  color: @window_fg_color;
+}
+
+.tone-button:hover {
+  background-color: alpha(currentColor, 0.07);
+}
+
+.override-dot {
+  color: @accent_color;
+  font-size: 8px;
+}
+
+.part-volume-scale {
+  min-height: 16px;
+}
+
+.part-volume-scale > trough {
+  min-height: 4px;
   border-radius: 999px;
-  background-color: alpha(currentColor, 0.10);
+  background-color: alpha(currentColor, 0.12);
 }
 
-.part-volume > trough > progress {
-  min-height: 3px;
+.part-volume-scale > trough > highlight {
+  min-height: 4px;
   border-radius: 999px;
   background-color: @accent_bg_color;
+}
+
+.volume-override {
+  color: @accent_color;
+  font-weight: 700;
 }
 
 .monospace {

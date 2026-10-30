@@ -44,6 +44,21 @@ class MidiBuildTest(unittest.TestCase):
                     for message in track if message.type == "program_change"}
         self.assertNotIn(4, channels)
 
+    def test_instrument_override(self) -> None:
+        midi = build_midi(self.rhythm, self.section, self.rhythm.tempo,
+                          instrument_overrides={5: (48, 0)})
+        programs = {(message.channel, message.program)
+                    for track in midi.tracks for message in track
+                    if message.type == "program_change"}
+        self.assertIn((4, 48), programs)
+
+    def test_volume_override(self) -> None:
+        midi = build_midi(self.rhythm, self.section, self.rhythm.tempo,
+                          volume_overrides={4: 0})
+        channels = {message.channel for track in midi.tracks
+                    for message in track if message.type == "program_change"}
+        self.assertNotIn(3, channels)
+
 
 @unittest.skipUnless(shutil.which("fluidsynth")
                      and any(path.is_file() for path in SOUNDFONTS),

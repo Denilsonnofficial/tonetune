@@ -49,9 +49,9 @@ def _active(part: int, muted: set[int], solo: set[int]) -> bool:
 
 
 def _append_controls(track: mido.MidiTrack, channel: int, mixer,
-                     time: int = 0) -> None:
+                     volume: int | None = None, time: int = 0) -> None:
     for control, value in (
-        (7, mixer.volume),
+        (7, mixer.volume if volume is None else volume),
         (10, mixer.pan),
         (91, mixer.reverb),
         (93, mixer.chorus),
@@ -87,10 +87,23 @@ def _append_notes(track: mido.MidiTrack, notes, channel: int,
 
 def build_midi(rhythm: Rhythm, section: Section, tempo: int,
                muted: set[int] | None = None,
-               solo: set[int] | None = None) -> MidiFile:
+               solo: set[int] | None = None,
+               instrument_overrides: dict[int, tuple[int, int]] | None = None,
+               volume_overrides: dict[int, int] | None = None) -> MidiFile:
     """Converte a seção do AC7 em um MIDI de prévia (aproximação GM)."""
     muted = muted or set()
     solo = solo or set()
+    instrument_overrides = instrument_overrides or {}
+    volume_overrides = volume_overrides or {}
+
+    def patch_for(part: int, mixer) -> int:
+        override = instrument_overrides.get(part)
+        return override[0] if override else mixer.patch
+
+    def volume_for(part: int, mixer) -> int:
+        return max(0, min(127, int(volume_overrides.get(part,
+                                                       mixer.volume))))
+
     total_ticks = section.total_ticks * TICK_FACTOR
     mid = MidiFile(ticks_per_beat=PPQ)
     conductor = mido.MidiTrack()
@@ -109,10 +122,11 @@ def build_midi(rhythm: Rhythm, section: Section, tempo: int,
     drum_parts = [part for part in (1, 2)
                   if _active(part, muted, solo)
                   and section.note_count_for_part(part)
-                  and section.mixer_for_part(part).volume > 0]
+                  and volume_for(part, section.mixer_for_part(part)) > 0]
     if drum_parts:
         kit_part = 2 if 2 in drum_parts else drum_parts[0]
         mixer = section.mixer_for_part(kit_part)
+        volume = volume_for(kit_part, mixer)
         notes = []
         for part in drum_parts:
             notes.extend(section.notes_for_part(part))
@@ -122,8 +136,9 @@ def build_midi(rhythm: Rhythm, section: Section, tempo: int,
             channel = 9
             track.append(Message(
                 "program_change", channel=channel,
-                program=max(0, min(127, mixer.patch)), time=0))
-            _append_controls(track, channel, mixer)
+                program=max(0, min(127, patch_for(kit_part, mixer))),
+                time=0))
+            _append_controls(track, channel, mixer, volume)
             _append_notes(track, notes, channel, total_ticks)
             note_total += len(notes)
 
@@ -134,15 +149,16 @@ def build_midi(rhythm: Rhythm, section: Section, tempo: int,
         if not notes:
             continue
         mixer = section.mixer_for_part(part)
-        if mixer.volume == 0:
+        volume = volume_for(part, mixer)
+        if volume == 0:
             continue
         track = mido.MidiTrack()
         mid.tracks.append(track)
         channel = CHANNELS[part]
         track.append(Message(
             "program_change", channel=channel,
-            program=max(0, min(127, mixer.patch)), time=0))
-        _append_controls(track, channel, mixer)
+            program=max(0, min(127, patch_for(part, mixer))), time=0))
+        _append_controls(track, channel, mixer, volume)
         _append_notes(track, notes, channel, total_ticks)
         note_total += len(notes)
 
@@ -200,30 +216,47 @@ class Renderer:
         self.cache_dir.mkdir(parents=True, exist_ok=True)
 
     def cache_key(self, rhythm: Rhythm, section: Section, tempo: int,
-                  muted: set[int], solo: set[int]) -> str:
+                  muted: set[int], solo: set[int],
+                  instrument_overrides: dict[int, tuple[int, int]] | None = None,
+                  volume_overrides: dict[int, int] | None = None) -> str:
         try:
             content = rhythm.path.read_bytes()
         except OSError:
             content = str(rhythm.path).encode("utf-8")
+        instrument_overrides = instrument_overrides or {}
+        volume_overrides = volume_overrides or {}
         digest = hashlib.sha256()
         digest.update(content)
         digest.update(f"{section.index}|{tempo}|".encode("ascii"))
         digest.update(",".join(map(str, sorted(muted))).encode("ascii"))
         digest.update(b"|")
         digest.update(",".join(map(str, sorted(solo))).encode("ascii"))
+        for part in range(1, 9):
+            instrument = instrument_overrides.get(part)
+            volume = volume_overrides.get(part)
+            digest.update(
+                f"|{part}:{instrument}:{volume}".encode("ascii"))
         return digest.hexdigest()[:20]
 
     def cache_path(self, rhythm: Rhythm, section: Section, tempo: int,
-                   muted: set[int], solo: set[int]) -> Path:
-        key = self.cache_key(rhythm, section, tempo, muted, solo)
+                   muted: set[int], solo: set[int],
+                   instrument_overrides: dict[int, tuple[int, int]] | None = None,
+                   volume_overrides: dict[int, int] | None = None) -> Path:
+        key = self.cache_key(rhythm, section, tempo, muted, solo,
+                             instrument_overrides, volume_overrides)
         return self.cache_dir / f"section_{key}.wav"
 
     def render(self, rhythm: Rhythm, section: Section, tempo: int,
                muted: set[int] | None = None,
-               solo: set[int] | None = None) -> Path:
+               solo: set[int] | None = None,
+               instrument_overrides: dict[int, tuple[int, int]] | None = None,
+               volume_overrides: dict[int, int] | None = None) -> Path:
         muted = muted or set()
         solo = solo or set()
-        final = self.cache_path(rhythm, section, tempo, muted, solo)
+        instrument_overrides = instrument_overrides or {}
+        volume_overrides = volume_overrides or {}
+        final = self.cache_path(rhythm, section, tempo, muted, solo,
+                                instrument_overrides, volume_overrides)
         if final.is_file() and final.stat().st_size > 1024:
             return final
 
@@ -237,7 +270,8 @@ class Renderer:
         raw_wav = Path(wav_name)
         final_tmp = final.with_suffix(".tmp.wav")
         try:
-            midi = build_midi(rhythm, section, tempo, muted, solo)
+            midi = build_midi(rhythm, section, tempo, muted, solo,
+                              instrument_overrides, volume_overrides)
             midi.save(mid_path)
             command = [
                 "fluidsynth", "-ni", "-q", "-g", "0.75", "-r", "44100",

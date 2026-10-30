@@ -16,6 +16,8 @@ from gi.repository import Adw, Gdk, Gio, GLib, Gtk, Pango  # noqa: E402
 from ac7 import AC7Error, Rhythm, Section, load_ac7  # noqa: E402
 from audio import AudioError, PlaybackEngine, Renderer  # noqa: E402
 from constants import APP_ID, APP_NAME  # noqa: E402
+from instruments import InstrumentDialog  # noqa: E402
+from tones import Tone  # noqa: E402
 from widgets import PartRow, PatternView, SectionRow  # noqa: E402
 
 CONFIG_DIR = Path(GLib.get_user_config_dir()) / "tonetune"
@@ -65,6 +67,9 @@ class TonetuneWindow(Adw.ApplicationWindow):
         self.current_index = 0
         self.muted: set[int] = set()
         self.solo: set[int] = set()
+        self.instruments: dict[int, Tone] = {}
+        self.volumes: dict[int, int] = {}
+        self._dialog = None
         self._busy = False
         self._request = 0
         self._timer_id: int | None = None
@@ -104,6 +109,7 @@ class TonetuneWindow(Adw.ApplicationWindow):
             ("toggle-play", self._toggle_play),
             ("stop", self._stop),
             ("toggle-loop", self._toggle_loop),
+            ("reset-mix", self._reset_mix),
         )
         for name, callback in actions:
             action = Gio.SimpleAction.new(name, None)
@@ -134,6 +140,7 @@ class TonetuneWindow(Adw.ApplicationWindow):
         menu = Gio.Menu()
         menu.append("Abrir ritmo…", "win.open")
         menu.append("Recarregar", "win.reload")
+        menu.append("Restaurar mixagem do AC7", "win.reset-mix")
         menu.append("Mostrar na pasta", "win.reveal")
         menu.append("Atalhos", "win.shortcuts")
         menu.append("Sobre o Tonetune", "app.about")
@@ -409,10 +416,12 @@ class TonetuneWindow(Adw.ApplicationWindow):
         title = Gtk.Label(label="Partes", xalign=0)
         title.add_css_class("panel-title")
         header.append(title)
-        hint = Gtk.Label(label="M muta · S isola · o volume vem do AC7.",
-                         xalign=0)
+        hint = Gtk.Label(
+            label="Ligue/desligue · S isola · timbre troca · volume ajusta.",
+            xalign=0)
         hint.add_css_class("caption")
         hint.add_css_class("dim-label")
+        hint.set_wrap(True)
         header.append(hint)
         panel.append(header)
 
@@ -427,7 +436,9 @@ class TonetuneWindow(Adw.ApplicationWindow):
                                  spacing=2)
         self.part_rows: dict[int, PartRow] = {}
         for part in range(1, 9):
-            row = PartRow(part, self._on_part_changed)
+            row = PartRow(part, self._on_part_changed,
+                          self._on_part_volume,
+                          self._open_instrument_dialog)
             self.part_rows[part] = row
             self.parts_box.append(row)
         scroller.set_child(self.parts_box)
@@ -463,6 +474,8 @@ class TonetuneWindow(Adw.ApplicationWindow):
             self._set_busy(False)
             self.muted.clear()
             self.solo.clear()
+            self.instruments.clear()
+            self.volumes.clear()
         self._apply_rhythm(rhythm, reloading=reloading,
                            autoplay=was_playing and reloading)
         if reloading and was_paused:
@@ -596,7 +609,13 @@ class TonetuneWindow(Adw.ApplicationWindow):
         self.duration_label.set_label(
             _fmt_duration(self.rhythm.duration(section, tempo)))
         for part, row in self.part_rows.items():
-            row.set_mixer(section.mixer_for_part(part))
+            mixer = section.mixer_for_part(part)
+            row.set_mixer(
+                mixer,
+                override_tone=self.instruments.get(part),
+                volume=self.volumes.get(part, mixer.volume),
+                volume_overridden=part in self.volumes,
+            )
             row.set_section(section)
         self._update_parts_states()
         if self.engine.state == "stopped" and not self._busy:
@@ -642,6 +661,9 @@ class TonetuneWindow(Adw.ApplicationWindow):
         tempo = int(self.tempo_spin.get_value())
         muted = set(self.muted)
         solo = set(self.solo)
+        instruments = {part: (tone.program, tone.bank)
+                       for part, tone in self.instruments.items()}
+        volumes = dict(self.volumes)
         self._request += 1
         request = self._request
         self._set_busy(True, f"Preparando {section.name}…")
@@ -650,7 +672,8 @@ class TonetuneWindow(Adw.ApplicationWindow):
         def work() -> None:
             try:
                 wav = self.renderer.render(
-                    rhythm, section, tempo, muted, solo)
+                    rhythm, section, tempo, muted, solo,
+                    instruments, volumes)
             except (AudioError, OSError) as exc:
                 GLib.idle_add(self._render_done, request, None, str(exc))
             except Exception as exc:  # pragma: no cover - proteção extra
@@ -779,11 +802,75 @@ class TonetuneWindow(Adw.ApplicationWindow):
 
     def _on_part_changed(self, _part: int) -> None:
         self.muted = {part for part, row in self.part_rows.items()
-                      if row.mute.get_active()}
+                      if not row.enabled.get_active()}
         self.solo = {part for part, row in self.part_rows.items()
                      if row.solo.get_active()}
         if self.engine.active or self._busy:
             self._schedule_restart()
+
+    def _on_part_volume(self, part: int, value: int) -> None:
+        self.volumes[part] = max(0, min(127, int(value)))
+        if self.engine.active or self._busy:
+            self._schedule_restart()
+
+    def _open_instrument_dialog(self, part: int) -> None:
+        if self.current_section is None:
+            return
+        mixer = self.current_section.mixer_for_part(part)
+        drum = part in (1, 2)
+        parts = (1, 2) if drum else (part,)
+        override = ((self.instruments.get(2) or self.instruments.get(1))
+                    if drum else self.instruments.get(part))
+
+        def apply(tone: Tone) -> None:
+            for number in parts:
+                self.instruments[number] = tone
+                self._refresh_part_row(number)
+            if self.engine.active or self._busy:
+                self._schedule_restart()
+
+        def reset() -> None:
+            for number in parts:
+                self.instruments.pop(number, None)
+                self._refresh_part_row(number)
+            if self.engine.active or self._busy:
+                self._schedule_restart()
+
+        dialog = InstrumentDialog(
+            self, part, mixer.patch, mixer.bank, override, apply, reset)
+        self._dialog = dialog
+        dialog.connect("close-request", self._on_instrument_closed)
+        dialog.present()
+
+    def _on_instrument_closed(self, _dialog) -> bool:
+        self._dialog = None
+        return False
+
+    def _refresh_part_row(self, part: int) -> None:
+        if self.current_section is None:
+            return
+        row = self.part_rows.get(part)
+        if row is None:
+            return
+        mixer = self.current_section.mixer_for_part(part)
+        row.set_mixer(
+            mixer,
+            override_tone=self.instruments.get(part),
+            volume=self.volumes.get(part, mixer.volume),
+            volume_overridden=part in self.volumes,
+        )
+        row.set_section(self.current_section)
+
+    def _reset_mix(self) -> None:
+        if not self.instruments and not self.volumes:
+            return
+        self.instruments.clear()
+        self.volumes.clear()
+        for part in range(1, 9):
+            self._refresh_part_row(part)
+        if self.engine.active or self._busy:
+            self._schedule_restart()
+        self._toast("Mixagem original do AC7 restaurada.")
 
     def _schedule_restart(self) -> None:
         if self._restart_source is not None:
@@ -1042,7 +1129,7 @@ class TonetuneWindow(Adw.ApplicationWindow):
 
     def _show_shortcuts(self) -> None:
         dialog = Adw.Window(transient_for=self, modal=True, title="Atalhos")
-        dialog.set_default_size(440, 460)
+        dialog.set_default_size(460, 570)
         toolbar = Adw.ToolbarView()
         header = Adw.HeaderBar()
         toolbar.add_top_bar(header)
@@ -1058,7 +1145,10 @@ class TonetuneWindow(Adw.ApplicationWindow):
             ("1 a 9 e 0", "Tocar a seção correspondente"),
             ("F5", "Recarregar o arquivo"),
             ("Ctrl+O", "Abrir outro ritmo"),
-            ("M / S", "Mutar ou isolar uma parte"),
+            ("S", "Isolar uma parte"),
+            ("Interruptor", "Ligar/desligar a parte"),
+            ("Timbre", "Trocar o instrumento da parte"),
+            ("Volume", "Arrastar o volume da parte"),
         )
         listbox = Gtk.ListBox()
         listbox.add_css_class("boxed-list")

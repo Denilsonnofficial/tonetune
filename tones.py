@@ -6,6 +6,24 @@ from dataclasses import dataclass
 from pathlib import Path
 
 
+CATEGORY_LABELS = {
+    1: "Piano",
+    2: "Piano elétrico",
+    3: "Órgão",
+    4: "Guitarra",
+    5: "Baixo",
+    6: "Strings",
+    7: "Metais",
+    8: "Sopro",
+    9: "Flauta",
+    10: "Synth",
+    11: "Pad/Coro",
+    12: "Étnico",
+    13: "GM",
+    14: "Bateria",
+}
+
+
 @dataclass(frozen=True)
 class Tone:
     number: int
@@ -13,6 +31,34 @@ class Tone:
     program: int
     bank: int
     category: int = 0
+
+    @property
+    def drum(self) -> bool:
+        return self.bank == 120
+
+
+def category_label(number: int) -> str:
+    return CATEGORY_LABELS.get(number, f"Categoria {number}")
+
+
+def drum_tones() -> list[Tone]:
+    return [tone for tone in TONES if tone.drum]
+
+
+def melodic_tones() -> list[Tone]:
+    return [tone for tone in TONES if not tone.drum]
+
+
+def tone_for(patch: int, bank: int, part: int | None = None) -> Tone | None:
+    """Tenta achar o tom Casio correspondente ao patch/banco do AC7."""
+    patch = max(0, min(127, int(patch)))
+    bank = 120 if (bank == 120 or part in (1, 2)) else max(0, min(127, int(bank)))
+    tone = _BY_KEY.get((patch, bank))
+    if tone is None:
+        candidates = _BY_PROGRAM.get(patch, [])
+        if candidates:
+            tone = candidates[0]
+    return tone
 
 
 GM_PROGRAMS = (

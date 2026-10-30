@@ -38,11 +38,16 @@ levar o pendrive ao teclado a cada tentativa.
 - Abre arquivos `.AC7` com 6 ou 12 elementos.
 - Lista **Intro 1/2, Variações 1–4, Fills 1–4 e Endings 1/2**, mostrando
   compassos, notas e uma miniatura de atividade por compasso.
-- **Oito partes** com instrumento, volume do AC7, mute (**M**) e solo (**S**).
+- **Oito partes** com interruptor liga/desliga, solo (**S**), volume ajustável
+  e troca de instrumento.
+- **600 tons do CT-X800** (e os 36 kits de bateria) no seletor de instrumento,
+  com busca por nome/número e filtro por categoria.
 - Reprodução em loop com **FluidSynth + GStreamer**.
 - Controle de **andamento** para testar o ritmo mais devagar ou mais rápido
   (não altera o arquivo).
 - Volume geral independente do volume gravado no ritmo.
+- As trocas de instrumento e volume são **só da prévia**: o `.AC7` não é
+  modificado. O menu **Restaurar mixagem do AC7** desfaz tudo.
 - Linha do tempo colorida com as notas de todas as partes e playhead.
 - **Recarregamento automático** quando o arquivo é salvo por outro programa.
 - Abrir por botão, arrastar e soltar, arquivos recentes ou linha de comando:
@@ -105,10 +110,23 @@ python3 main.py
 2. A **Variação 1** é selecionada automaticamente quando existe.
 3. Aperte **Espaço** ou o botão de play para ouvir a seção em loop.
 4. Clique em outra seção (ou use as teclas **1–9**) para trocar na hora.
-5. Use **M** para mutar e **S** para isolar uma parte.
-6. Ajuste o **BPM** ou o volume geral se quiser testar em outra condição.
-7. Salve o ritmo de novo no editor: o Tonetune recarrega e reinicia a seção
+5. Ligue/desligue uma parte no **interruptor** e use **S** para isolar.
+6. Arraste o **volume** da parte para ouvir uma faixa mais forte ou mais fraca.
+7. Clique no **nome do timbre** para abrir o seletor e escolher outro
+   instrumento. **Usar tom** aplica; **Restaurar do AC7** volta ao original.
+8. Ajuste o **BPM** ou o volume geral se quiser testar em outra condição.
+9. Salve o ritmo de novo no editor: o Tonetune recarrega e reinicia a seção
    automaticamente se estiver tocando.
+
+### Trocar instrumento e volume
+
+Clique no nome do timbre de qualquer parte para abrir a lista dos 600 tons (ou
+dos kits de bateria, nas partes 1 e 2). A busca aceita nome ou número, e o
+filtro separa por categoria. O tom escolhido e o volume do slider valem só para
+a prévia; o AC7 continua igual. Para voltar tudo ao original, use
+**Restaurar mixagem do AC7** no menu.
+
+![Seletor de instrumento](docs/instrument-picker.png)
 
 ### Atalhos
 
@@ -120,15 +138,22 @@ python3 main.py
 | Tocar a seção 1–9 (e 0 para a 10) | 1–9, 0 |
 | Recarregar arquivo | F5 |
 | Abrir outro ritmo | Ctrl+O |
-| Mutar / isolar parte | botões M / S |
+| Isolar uma parte | botão S |
+| Ligar/desligar, trocar timbre e volume | controles de cada parte |
 
 ## O que é fiel e o que é aproximado
 
-O Tonetune usa os patches, volumes, pans, reverbs e choruses gravados no AC7.
+Por padrão, o Tonetune usa os patches, volumes, pans, reverbs e choruses
+gravados no AC7. Você pode trocar o instrumento e o volume de cada parte para
+testar alternativas, mas isso vale **somente para a prévia** — o arquivo não é
+alterado e o teclado continua com a mixagem original.
+
 A prévia no PC usa um **SoundFont GM**, então:
 
-- o programa GM equivalente é usado para cada timbre;
-- as duas partes de bateria são misturadas em um único kit GM;
+- o programa GM equivalente é usado para cada timbre, inclusive nos tons
+  escolhidos manualmente;
+- as duas partes de bateria são misturadas em um único kit GM (a troca de kit
+  vale para as duas);
 - o resultado é uma boa aproximação para ensaiar e comparar versões, mas o
   timbre definitivo só sai no CT-X800.
 
@@ -151,6 +176,8 @@ Nenhum arquivo do ritmo é modificado.
 - Não importa MIDI nem styles Yamaha `.STY`.
 - Não grava no pendrive nem no teclado.
 - A prévia é GM, não os timbres exatos do CT-X800.
+- Trocas de instrumento e volume são da sessão: não são gravadas no AC7.
+- Na prévia GM, Percussão e Bateria compartilham o mesmo kit.
 - Elementos vazios aparecem desabilitados na lista de seções.
 
 ## Créditos
