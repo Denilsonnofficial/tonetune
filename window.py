@@ -53,7 +53,7 @@ class TonetuneWindow(Adw.ApplicationWindow):
         self.config = load_config()
         self.set_default_size(int(self.config.get("width", 1280)),
                               int(self.config.get("height", 830)))
-        self.set_size_request(980, 640)
+        self.set_size_request(1100, 700)
         self.set_title(APP_NAME)
         try:
             self.set_icon_name(APP_ID)
