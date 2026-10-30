@@ -2,10 +2,11 @@
 
 O formato é o mesmo usado pelo teclado e pelo editor ctx800-editor. O leitor
 extrai nome, andamento, compasso, seções (elementos) e as notas de cada parte,
-sem modificar o arquivo.
+sem modificar o arquivo. `export_ac7` grava uma cópia com a mixagem alterada.
 """
 from __future__ import annotations
 
+import os
 import struct
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -170,6 +171,8 @@ class Rhythm:
     sections: list[Section]
     mixers: dict[int, Mixer] = field(default_factory=dict)
     file_size: int = 0
+    tempo_offset: int = -1
+    mixer_refs: list[tuple[int, int]] = field(default_factory=list)  # parte, byte
 
     @property
     def display_name(self) -> str:
@@ -352,22 +355,28 @@ def load_ac7(path: str | Path) -> Rhythm:
     name = ""
     beats, denominator = 4, 4
     tempo = 120
-    for kind, payload in _atoms(data, elements_offset + 7 + count * 4,
-                                global_end):
+    tempo_offset = -1
+    atom_pos = elements_offset + 7 + count * 4
+    for kind, payload in _atoms(data, atom_pos, global_end):
+        atom_start = atom_pos + 2
+        atom_pos = atom_start + len(payload)
         if kind == 0x00:
             name = payload.split(b"\x00")[0].decode("latin-1", "replace")
         elif kind == 0x01:
             beats, denominator = _timesig(payload)
         elif kind == 0x02 and payload:
             tempo = payload[0] or 120
+            tempo_offset = atom_start
     tempo = max(20, min(300, tempo))
 
     if _u32(data, mixr_offset) != int.from_bytes(b"MIXR", "little"):
         raise AC7Error("Segmento MIXR inválido.")
     mixer_count = _u16(data, mixr_offset + 8)
     mixers: list[Mixer] = []
+    mixer_offsets: list[int] = []
     for index in range(mixer_count):
         pos = _u32(data, mixr_offset + 10 + index * 4)
+        mixer_offsets.append(pos)
         if pos + 6 > len(data):
             mixers.append(DEFAULT_MIXERS[1])
             continue
@@ -393,6 +402,7 @@ def load_ac7(path: str | Path) -> Rhythm:
         return segment_end
 
     sections: list[Section] = []
+    mixer_refs: list[tuple[int, int]] = []
     for index, definition in enumerate(definitions, start=1):
         if definition + 6 > len(data) or data[definition:definition + 4] != b"ELMT":
             continue
@@ -428,6 +438,10 @@ def load_ac7(path: str | Path) -> Rhythm:
             part = _part_from_raw(raw_part)
             if not 1 <= part <= 8:
                 continue
+            mixer_ref = _u16(raw_mixers, track_no * 2) & 0x7FFF
+            if (mixer_ref < len(mixers)
+                    and mixer_offsets[mixer_ref] + 6 <= len(data)):
+                mixer_refs.append((part, mixer_offsets[mixer_ref]))
             is_drum = part in (1, 2)
             addresses = drum_addresses if is_drum else othr_addresses
             address_list = drum_sorted if is_drum else othr_sorted
@@ -473,4 +487,43 @@ def load_ac7(path: str | Path) -> Rhythm:
         sections=sections,
         mixers=rhythm_mixers,
         file_size=len(data),
+        tempo_offset=tempo_offset,
+        mixer_refs=mixer_refs,
     )
+
+
+def export_ac7(rhythm: Rhythm, target: str | Path, tempo: int,
+               muted: set[int], instruments: dict[int, tuple[int, int]],
+               volumes: dict[int, int]) -> None:
+    """Grava uma cópia do ritmo com a mixagem da prévia.
+
+    Só bytes de mixer e andamento mudam, em todas as seções. Notas, tamanho e
+    o arquivo de origem ficam iguais. Parte desligada vai com volume zero.
+    """
+    target = Path(target)
+    try:
+        data = bytearray(rhythm.path.read_bytes())
+    except OSError as exc:
+        raise AC7Error(f"Não foi possível ler o ritmo: {exc}") from exc
+    if len(data) != rhythm.file_size:
+        raise AC7Error("O arquivo mudou no disco. Recarregue antes de exportar.")
+
+    if rhythm.tempo_offset >= 0:
+        data[rhythm.tempo_offset] = max(20, min(255, int(tempo)))
+    for part, offset in rhythm.mixer_refs:
+        if part in instruments:
+            data[offset], data[offset + 1] = instruments[part]
+        if part in muted:
+            data[offset + 2] = 0
+        elif part in volumes:
+            data[offset + 2] = max(0, min(127, int(volumes[part])))
+
+    temporary = target.with_name(f".{target.name}.tmp")
+    try:
+        temporary.write_bytes(data)
+        load_ac7(temporary)
+        os.replace(temporary, target)
+    except OSError as exc:
+        raise AC7Error(f"Não foi possível salvar o ritmo: {exc}") from exc
+    finally:
+        temporary.unlink(missing_ok=True)

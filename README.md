@@ -23,8 +23,8 @@ transições sem emenda, usando um SoundFont GM.
 
 Ele foi criado a partir do
 [ctx800-editor](https://github.com/Denilsonnofficial/ctx800-editor), mas é uma
-ferramenta separada e **somente de reprodução**: não edita, não salva e não
-exporta AC7. O fluxo é:
+ferramenta separada, **focada em ouvir**: não edita notas, mas exporta uma cópia
+do AC7 com instrumentos, volumes e andamento ajustados. O fluxo é:
 
 1. editar o ritmo no editor (ou por script);
 2. abrir o `.AC7` resultante no Tonetune;
@@ -52,8 +52,9 @@ levar o pendrive ao teclado a cada tentativa.
 - Controle de **andamento** para testar o ritmo mais devagar ou mais rápido
   (não altera o arquivo).
 - Volume geral independente do volume gravado no ritmo.
-- As trocas de instrumento e volume são **só da prévia**: o `.AC7` não é
+- As trocas de instrumento e volume valem na prévia e o `.AC7` aberto não é
   modificado. O menu **Restaurar mixagem do AC7** desfaz tudo.
+- **Exportar para o teclado**: grava uma cópia do `.AC7` com as suas mudanças.
 - Linha do tempo colorida com as notas de todas as partes e playhead.
 - **Recarregamento automático** quando o arquivo é salvo por outro programa.
 - Abrir por botão, arrastar e soltar, arquivos recentes ou linha de comando:
@@ -145,6 +146,22 @@ a prévia; o AC7 continua igual. Para voltar tudo ao original, use
 
 ![Seletor de instrumento](docs/instrument-picker.png)
 
+### Exportar para o teclado
+
+Use o botão de salvar, **Ctrl+S** ou **Exportar para o teclado…** no menu. O
+Tonetune grava uma cópia, por padrão `NOME_EDITADO.AC7`, e o arquivo original
+fica como está. Copie o resultado para a pasta `MUSICDAT` do pendrive (FAT32).
+
+| Vai para o arquivo | Não vai |
+|---|---|
+| Instrumento de cada parte | Solo (S), que serve só para ouvir |
+| Volume de cada parte | Acorde escolhido, que no teclado vem da sua mão |
+| Parte desligada, gravada com volume 0 | Repetição de seção |
+| BPM (20 a 255) | |
+
+Instrumento e volume valem para a parte em todas as seções do ritmo. As notas
+não mudam.
+
 ### Atalhos
 
 | Ação | Atalho |
@@ -155,6 +172,7 @@ a prévia; o AC7 continua igual. Para voltar tudo ao original, use
 | Apertar o botão da seção 1–9 (e 0 para a 10) | 1–9, 0 |
 | Recarregar arquivo | F5 |
 | Abrir outro ritmo | Ctrl+O |
+| Exportar AC7 com as mudanças | Ctrl+S |
 | Isolar uma parte | botão S |
 | Ligar/desligar, trocar timbre e volume | controles de cada parte |
 
@@ -162,8 +180,8 @@ a prévia; o AC7 continua igual. Para voltar tudo ao original, use
 
 Por padrão, o Tonetune usa os patches, volumes, pans, reverbs e choruses
 gravados no AC7. Você pode trocar o instrumento e o volume de cada parte para
-testar alternativas, mas isso vale **somente para a prévia** — o arquivo não é
-alterado e o teclado continua com a mixagem original.
+testar alternativas, e isso vale **só para a prévia** — o arquivo não é
+alterado e o teclado continua com a mixagem original até você exportar.
 
 A prévia no PC usa um **SoundFont GM**, então:
 
@@ -191,11 +209,11 @@ Nenhum arquivo do ritmo é modificado.
 
 ## Limitações
 
-- Somente leitura: não edita nem exporta AC7.
+- Não edita notas: a exportação muda só mixagem e andamento.
 - Não importa MIDI nem styles Yamaha `.STY`.
 - Não grava no pendrive nem no teclado.
 - A prévia é GM, não os timbres exatos do CT-X800.
-- Trocas de instrumento e volume são da sessão: não são gravadas no AC7.
+- Trocas de instrumento e volume ficam na sessão até serem exportadas.
 - A prévia GM é uma aproximação dos kits e timbres do teclado.
 - Elementos vazios aparecem desabilitados na lista de seções.
 

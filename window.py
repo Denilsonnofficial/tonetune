@@ -14,7 +14,8 @@ gi.require_version("Gdk", "4.0")
 
 from gi.repository import Adw, Gdk, Gio, GLib, Gtk, Pango  # noqa: E402
 
-from ac7 import AC7_PPQ, AC7Error, Rhythm, Section, load_ac7  # noqa: E402
+from ac7 import (AC7_PPQ, AC7Error, Rhythm, Section,  # noqa: E402
+                 export_ac7, load_ac7)
 from arranger import NOTE_NAMES, Chord  # noqa: E402
 from audio import AudioError, PlaybackEngine, Position  # noqa: E402
 from constants import APP_ID, APP_NAME  # noqa: E402
@@ -114,6 +115,7 @@ class TonetuneWindow(Adw.ApplicationWindow):
         actions = (
             ("open", self._open_dialog),
             ("reload", self._reload_clicked),
+            ("export", self._export_dialog),
             ("reveal", self._reveal_file),
             ("shortcuts", self._show_shortcuts),
             ("toggle-play", self._toggle_play),
@@ -147,9 +149,19 @@ class TonetuneWindow(Adw.ApplicationWindow):
         self.reload_button.connect("clicked", lambda _button: self._reload_clicked())
         self.header.pack_start(self.reload_button)
 
+        self.export_button = Gtk.Button.new_from_icon_name(
+            "document-save-as-symbolic")
+        self.export_button.set_tooltip_text(
+            "Exportar AC7 com as mudanças, para o teclado (Ctrl+S)")
+        self.export_button.set_sensitive(False)
+        self.export_button.connect(
+            "clicked", lambda _button: self._export_dialog())
+        self.header.pack_start(self.export_button)
+
         menu = Gio.Menu()
         menu.append("Abrir ritmo…", "win.open")
         menu.append("Recarregar", "win.reload")
+        menu.append("Exportar para o teclado…", "win.export")
         menu.append("Restaurar mixagem do AC7", "win.reset-mix")
         menu.append("Mostrar na pasta", "win.reveal")
         menu.append("Atalhos", "win.shortcuts")
@@ -557,6 +569,7 @@ class TonetuneWindow(Adw.ApplicationWindow):
         self._file_mtime = rhythm.path.stat().st_mtime_ns
         self._file_size = rhythm.path.stat().st_size
         self.reload_button.set_sensitive(True)
+        self.export_button.set_sensitive(True)
         self.engine.set_rhythm(rhythm)
         self.engine.live.tempo = rhythm.tempo
         self._loading = True
@@ -964,6 +977,40 @@ class TonetuneWindow(Adw.ApplicationWindow):
         self.config["last_folder"] = str(path.parent)
         self.load_path(path)
 
+    def _export_dialog(self) -> None:
+        if self.rhythm is None:
+            return
+        dialog = Gtk.FileDialog.new()
+        dialog.set_title("Exportar ritmo para o teclado")
+        dialog.set_modal(True)
+        dialog.set_initial_folder(
+            Gio.File.new_for_path(str(self.rhythm.path.parent)))
+        dialog.set_initial_name(f"{self.rhythm.path.stem}_EDITADO.AC7")
+        dialog.save(self, None, self._export_done)
+
+    def _export_done(self, dialog, result) -> None:
+        try:
+            file = dialog.save_finish(result)
+        except GLib.Error:
+            return
+        if file is None or file.get_path() is None or self.rhythm is None:
+            return
+        path = Path(file.get_path())
+        if path.suffix.lower() != ".ac7":
+            path = path.with_name(f"{path.name}.AC7")
+        tempo = int(self.tempo_spin.get_value())
+        try:
+            export_ac7(self.rhythm, path, tempo, self.muted,
+                       {part: (tone.program, tone.bank)
+                        for part, tone in self.instruments.items()},
+                       self.volumes)
+        except AC7Error as exc:
+            self._toast(str(exc))
+            return
+        self._set_status(f"Exportado: {path}")
+        self._toast(f"Ritmo exportado: {path.name}. "
+                    "No pendrive, coloque na pasta MUSICDAT.")
+
     def _reload_clicked(self) -> None:
         if self.rhythm is None:
             return
@@ -1136,6 +1183,9 @@ class TonetuneWindow(Adw.ApplicationWindow):
         self.add_controller(controller)
 
     def _on_key_pressed(self, _controller, keyval, _keycode, state) -> bool:
+        if state & Gdk.ModifierType.CONTROL_MASK and keyval == Gdk.KEY_s:
+            self._export_dialog()
+            return True
         focus = self.get_focus()
         if isinstance(focus, (Gtk.Entry, Gtk.Text, Gtk.SpinButton)):
             return False
@@ -1185,6 +1235,7 @@ class TonetuneWindow(Adw.ApplicationWindow):
             ("1 a 9 e 0", "Apertar o botão da seção (mesma variação = virada)"),
             ("F5", "Recarregar o arquivo"),
             ("Ctrl+O", "Abrir outro ritmo"),
+            ("Ctrl+S", "Exportar AC7 com as mudanças"),
             ("S", "Isolar uma parte"),
             ("Interruptor", "Ligar/desligar a parte"),
             ("Timbre", "Trocar o instrumento da parte"),
