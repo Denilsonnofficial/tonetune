@@ -18,7 +18,8 @@
 
 O **Tonetune** é um reprodutor leve para arquivos `.AC7` do Casio CT-X800
 (e da família CT-X). Ele abre o ritmo, mostra as seções e as oito partes e
-toca cada seção em loop com um SoundFont GM.
+toca o ritmo como no teclado: painel de seções, virada, final, acorde e
+transições sem emenda, usando um SoundFont GM.
 
 Ele foi criado a partir do
 [ctx800-editor](https://github.com/Denilsonnofficial/ctx800-editor), mas é uma
@@ -42,7 +43,11 @@ levar o pendrive ao teclado a cada tentativa.
   e troca de instrumento.
 - **600 tons do CT-X800** (e os 36 kits de bateria) no seletor de instrumento,
   com busca por nome/número e filtro por categoria.
-- Reprodução em loop com **FluidSynth + GStreamer**.
+- **Painel como o do teclado**: visor com compasso, tempo e acorde, luzes de
+  tempo e botões INTRO, VAR, FILL, ENDING e SYNCHRO.
+- **Motor ao vivo** com libfluidsynth e GStreamer: andamento, acorde, mixagem e
+  timbres mudam na hora, sem preparar áudio e sem emenda no loop.
+- **Seletor de acorde** com as 12 tônicas e 8 tipos.
 - Controle de **andamento** para testar o ritmo mais devagar ou mais rápido
   (não altera o arquivo).
 - Volume geral independente do volume gravado no ritmo.
@@ -64,13 +69,8 @@ Python 3.
 ```bash
 sudo apt install python3-gi gir1.2-gtk-4.0 gir1.2-adw-1 \
     gir1.2-gstreamer-1.0 gir1.2-gst-plugins-base-1.0 \
-    fluidsynth fluid-soundfont-gm python3-mido
-```
-
-Se preferir instalar o `mido` pelo pip:
-
-```bash
-python3 -m pip install --user -r requirements.txt
+    gstreamer1.0-plugins-base gstreamer1.0-pulseaudio \
+    fluidsynth fluid-soundfont-gm
 ```
 
 ## Instalar
@@ -108,8 +108,9 @@ python3 main.py
 1. Abra um `.AC7` pelo botão **Abrir ritmo**, pelo menu ou arrastando o arquivo
    para a janela.
 2. A **Variação 1** é selecionada automaticamente quando existe.
-3. Aperte **Espaço** ou o botão de play para ouvir a seção em loop.
-4. Clique em outra seção (ou use as teclas **1–9**) para trocar na hora.
+3. Aperte **Espaço** ou o botão de play para começar.
+4. Use os botões do painel, a lista de seções ou as teclas **1–9** para mudar
+   a seção durante o ritmo (veja [Como o ritmo se comporta](#como-o-ritmo-se-comporta)).
 5. Ligue/desligue uma parte no **interruptor** e use **S** para isolar.
 6. Arraste o **volume** da parte para ouvir uma faixa mais forte ou mais fraca.
 7. Clique no **nome do timbre** para abrir o seletor e escolher outro
@@ -117,6 +118,21 @@ python3 main.py
 8. Ajuste o **BPM** ou o volume geral se quiser testar em outra condição.
 9. Salve o ritmo de novo no editor: o Tonetune recarrega e reinicia a seção
    automaticamente se estiver tocando.
+
+### Como o ritmo se comporta
+
+| Botão | Parado | Tocando |
+|---|---|---|
+| INTRO | toca a intro e segue para a variação | entra no próximo compasso |
+| VAR | começa nela | outra variação entra no próximo compasso; a mesma toca a virada dela e volta |
+| VAR durante intro ou virada | — | fica na fila e entra quando a seção acabar |
+| FILL | toca a virada e segue para a variação | entra no próximo tempo, na posição do compasso |
+| ENDING | toca o final e para | entra no próximo compasso e para sozinho |
+| SYNCHRO | o ritmo espera e começa ao escolher um acorde | — |
+
+A seção que está na fila pisca no painel e aparece no visor. O botão de
+repetição serve para conferir uma seção isolada: ela fica em loop e a troca é
+imediata.
 
 ### Trocar instrumento e volume
 
@@ -134,8 +150,8 @@ a prévia; o AC7 continua igual. Para voltar tudo ao original, use
 |---|---|
 | Tocar / pausar | Espaço |
 | Parar | Esc |
-| Repetir seção | L |
-| Tocar a seção 1–9 (e 0 para a 10) | 1–9, 0 |
+| Repetir só a seção atual | L |
+| Apertar o botão da seção 1–9 (e 0 para a 10) | 1–9, 0 |
 | Recarregar arquivo | F5 |
 | Abrir outro ritmo | Ctrl+O |
 | Isolar uma parte | botão S |
@@ -152,19 +168,21 @@ A prévia no PC usa um **SoundFont GM**, então:
 
 - o programa GM equivalente é usado para cada timbre, inclusive nos tons
   escolhidos manualmente;
-- as duas partes de bateria usam canais separados na prévia, então podem ter
-  kits e volumes independentes;
+- as duas partes de bateria usam canais de percussão separados, com kits e
+  volumes independentes, e cada set do CT-X800 usa o kit GM mais parecido;
 - o resultado é uma boa aproximação para ensaiar e comparar versões, mas o
   timbre definitivo só sai no CT-X800.
 
-O aplicativo **não aplica chord sync** (transposição por acorde): as notas são
-tocadas como estão gravadas, em Dó. É o ideal para conferir a programação do
-ritmo.
+O **acorde** padrão é Dó maior, que toca as notas como estão gravadas. Nos
+outros acordes, as faixas com chord sync são transpostas e têm terça, quinta e
+sétima ajustadas por uma regra simples, e bateria e faixas sem chord sync não
+mudam. A harmonização do teclado é própria da Casio, então pode haver diferença
+em algumas notas. O momento exato em que variação, virada e final entram também
+é uma aproximação baseada no manual da família CT-X.
 
 ## Onde ficam os arquivos
 
 ```
-~/.cache/tonetune/                 WAVs renderizados (cache)
 ~/.config/tonetune/config.json     recentes, volume, última pasta
 ```
 
@@ -186,7 +204,7 @@ Nenhum arquivo do ritmo é modificado.
   de ritmos que originou este projeto.
 - [ac7maker](https://github.com/michgz/ac7maker) — documentação e ferramentas
   do formato AC7.
-- GTK 4, Libadwaita, GStreamer, FluidSynth e mido.
+- GTK 4, Libadwaita, GStreamer e FluidSynth.
 
 ## Licença
 

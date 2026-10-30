@@ -97,11 +97,11 @@ class Track:
 
     @property
     def major_only(self) -> bool:
-        return bool(self.raw_part & 0x80)
+        return self.raw_part & 0xA0 == 0x80
 
     @property
     def minor_only(self) -> bool:
-        return bool(self.raw_part & 0xA0 == 0xA0)
+        return self.raw_part & 0xA0 == 0xA0
 
 
 @dataclass

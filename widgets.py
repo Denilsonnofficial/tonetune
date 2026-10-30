@@ -28,6 +28,7 @@ PART_COLORS = (
 )
 
 ACCENT = "#2ec4b6"
+LCD_INK = "#17261c"
 
 
 def _rounded(cr: cairo.Context, x: float, y: float, width: float,
@@ -45,20 +46,53 @@ class ColorDot(Gtk.DrawingArea):
     def __init__(self, color: str, size: int = 10) -> None:
         super().__init__()
         self.color = color
+        self.hit = False
         self.set_size_request(size, size)
         self.set_draw_func(self._draw)
 
     def _draw(self, _area, cr, width, height) -> None:
-        cr.set_source_rgb(*_hex(self.color))
+        cr.set_source_rgba(*_hex(self.color), 1.0 if self.hit else 0.45)
         cr.arc(width / 2, height / 2, min(width, height) / 2 - 0.5, 0,
                2 * math.pi)
         cr.fill()
+
+    def set_hit(self, hit: bool) -> None:
+        if hit != self.hit:
+            self.hit = hit
+            self.queue_draw()
 
 
 def _hex(value: str) -> tuple[float, float, float]:
     value = value.lstrip("#")
     return tuple(int(value[index:index + 2], 16) / 255.0
                  for index in (0, 2, 4))
+
+
+class BeatLamps(Gtk.DrawingArea):
+    """Luzes de tempo do visor; a primeira marca o início do compasso."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.beats = 4
+        self.beat = -1
+        self.set_size_request(-1, 12)
+        self.set_draw_func(self._draw)
+
+    def set_beats(self, beats: int) -> None:
+        self.beats = max(1, beats)
+        self.queue_draw()
+
+    def set_beat(self, beat: int) -> None:
+        if beat != self.beat:
+            self.beat = beat
+            self.queue_draw()
+
+    def _draw(self, _area, cr, _width, height) -> None:
+        for index in range(self.beats):
+            cr.set_source_rgba(*_hex(LCD_INK),
+                               1.0 if index == self.beat else 0.2)
+            _rounded(cr, index * 24, 2, 18, height - 4, 2)
+            cr.fill()
 
 
 class MiniBars(Gtk.DrawingArea):
@@ -179,7 +213,8 @@ class PartRow(Gtk.Box):
         self.color = PART_COLORS[part - 1]
 
         top = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
-        top.append(ColorDot(self.color, 11))
+        self.dot = ColorDot(self.color, 11)
+        top.append(self.dot)
 
         text = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
         text.set_hexpand(True)
@@ -253,6 +288,9 @@ class PartRow(Gtk.Box):
         self.volume_value.add_css_class("dim-label")
         volume_row.append(self.volume_value)
         self.append(volume_row)
+
+    def set_hit(self, hit: bool) -> None:
+        self.dot.set_hit(hit)
 
     def _changed(self, *_args) -> None:
         if self._updating:
@@ -334,7 +372,7 @@ class PatternView(Gtk.DrawingArea):
         self.rhythm = None
         self.section: Section | None = None
         self.position = 0.0
-        self.set_size_request(-1, 330)
+        self.set_size_request(-1, 170)
         self.set_vexpand(True)
         self.set_draw_func(self._draw)
         Adw.StyleManager.get_default().connect(

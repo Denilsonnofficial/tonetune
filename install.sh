@@ -31,6 +31,9 @@ install -m 644 \
 rm -f "$DATA_HOME/applications/br.com.ctx800.Editor.desktop"
 rm -f "$BIN_HOME/ctx800-editor"
 
+# WAVs das versões antigas; o motor ao vivo não usa mais cache.
+rm -f "${XDG_CACHE_HOME:-$HOME/.cache}"/tonetune/section_*.wav
+
 command -v update-desktop-database >/dev/null 2>&1 \
     && update-desktop-database "$DATA_HOME/applications" || true
 command -v gtk-update-icon-cache >/dev/null 2>&1 \

@@ -1,8 +1,9 @@
 """Janela principal do Tonetune."""
 from __future__ import annotations
 
+import bisect
 import json
-import threading
+import time
 from pathlib import Path
 
 import gi
@@ -13,12 +14,13 @@ gi.require_version("Gdk", "4.0")
 
 from gi.repository import Adw, Gdk, Gio, GLib, Gtk, Pango  # noqa: E402
 
-from ac7 import AC7Error, Rhythm, Section, load_ac7  # noqa: E402
-from audio import AudioError, PlaybackEngine, Renderer  # noqa: E402
+from ac7 import AC7_PPQ, AC7Error, Rhythm, Section, load_ac7  # noqa: E402
+from arranger import CHORD_QUALITIES, NOTE_NAMES, Chord  # noqa: E402
+from audio import AudioError, PlaybackEngine, Position  # noqa: E402
 from constants import APP_ID, APP_NAME  # noqa: E402
 from instruments import InstrumentDialog  # noqa: E402
 from tones import Tone  # noqa: E402
-from widgets import PartRow, PatternView, SectionRow  # noqa: E402
+from widgets import BeatLamps, PartRow, PatternView, SectionRow  # noqa: E402
 
 CONFIG_DIR = Path(GLib.get_user_config_dir()) / "tonetune"
 CONFIG_FILE = CONFIG_DIR / "config.json"
@@ -26,11 +28,18 @@ DEFAULT_CONFIG = {
     "recent": [],
     "last_folder": str(Path.home() / "Downloads"),
     "volume": 85,
-    "loop": True,
+    "repeat_section": False,
     "width": 1280,
     "height": 830,
 }
 DEMO_PATH = Path(__file__).with_name("examples") / "DEMO.AC7"
+PAD_ROWS = (
+    ((1, "INTRO 1"), (2, "VAR 1"), (3, "VAR 2"),
+     (4, "FILL 1"), (5, "FILL 2"), (6, "ENDING 1")),
+    ((7, "INTRO 2"), (8, "VAR 3"), (9, "VAR 4"),
+     (10, "FILL 3"), (11, "FILL 4"), (12, "ENDING 2")),
+)
+PART_HIT_TICKS = 14
 
 
 def load_config() -> dict:
@@ -55,7 +64,7 @@ class TonetuneWindow(Adw.ApplicationWindow):
         self.config = load_config()
         self.set_default_size(int(self.config.get("width", 1280)),
                               int(self.config.get("height", 830)))
-        self.set_size_request(1100, 700)
+        self.set_size_request(1180, 760)
         self.set_title(APP_NAME)
         try:
             self.set_icon_name(APP_ID)
@@ -70,21 +79,21 @@ class TonetuneWindow(Adw.ApplicationWindow):
         self.instruments: dict[int, Tone] = {}
         self.volumes: dict[int, int] = {}
         self._dialog = None
-        self._busy = False
-        self._request = 0
+        self._root = 0
+        self._quality = ""
+        self._part_ticks: dict[int, list[int]] = {}
         self._timer_id: int | None = None
         self._reload_source: int | None = None
-        self._restart_source: int | None = None
         self._monitors: list[Gio.FileMonitor] = []
         self._file_mtime = 0
         self._file_size = -1
         self._suppress_sections = False
         self._loading = False
 
-        self.renderer = Renderer()
         self.engine = PlaybackEngine(volume=int(self.config.get("volume", 85)) / 100)
         self.engine.on_finished = self._on_playback_finished
         self.engine.on_error = self._on_playback_error
+        self.engine.live.set_repeat(bool(self.config.get("repeat_section")))
 
         self._build_actions()
         self._build_ui()
@@ -280,32 +289,14 @@ class TonetuneWindow(Adw.ApplicationWindow):
         return panel
 
     def _build_info_panel(self) -> Gtk.Widget:
-        panel = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
+        panel = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=9)
         panel.add_css_class("panel")
         panel.set_margin_top(12)
         panel.set_margin_bottom(12)
         panel.set_margin_start(14)
         panel.set_margin_end(14)
 
-        top = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
-        title_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2)
-        title_box.set_hexpand(True)
-        self.name_label = Gtk.Label(label="—", xalign=0)
-        self.name_label.add_css_class("rhythm-name")
-        self.name_label.set_ellipsize(Pango.EllipsizeMode.END)
-        title_box.append(self.name_label)
-        self.file_label = Gtk.Label(label="", xalign=0)
-        self.file_label.add_css_class("caption")
-        self.file_label.add_css_class("dim-label")
-        self.file_label.set_ellipsize(Pango.EllipsizeMode.MIDDLE)
-        title_box.append(self.file_label)
-        top.append(title_box)
-
-        self.badge_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL,
-                                 spacing=6)
-        self.badge_box.set_valign(Gtk.Align.START)
-        top.append(self.badge_box)
-        panel.append(top)
+        panel.append(self._build_display())
 
         transport = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
         self.play_button = Gtk.Button.new_from_icon_name(
@@ -325,11 +316,21 @@ class TonetuneWindow(Adw.ApplicationWindow):
 
         self.loop_button = Gtk.ToggleButton()
         self.loop_button.set_icon_name("media-playlist-repeat-symbolic")
-        self.loop_button.set_active(bool(self.config.get("loop", True)))
+        self.loop_button.set_active(bool(self.config.get("repeat_section")))
         self.loop_button.add_css_class("flat")
-        self.loop_button.set_tooltip_text("Repetir a seção (L)")
+        self.loop_button.set_tooltip_text(
+            "Repetir só esta seção, para conferir intro, virada ou final (L)")
         self.loop_button.connect("toggled", self._on_loop_toggled)
         transport.append(self.loop_button)
+
+        self.synchro_button = Gtk.ToggleButton(label="SYNCHRO")
+        self.synchro_button.add_css_class("pad")
+        self.synchro_button.set_valign(Gtk.Align.CENTER)
+        self.synchro_button.set_focusable(False)
+        self.synchro_button.set_tooltip_text(
+            "Espera: o ritmo começa quando você escolher um acorde")
+        self.synchro_button.connect("toggled", self._on_synchro_toggled)
+        transport.append(self.synchro_button)
 
         transport.append(Gtk.Separator(orientation=Gtk.Orientation.VERTICAL))
 
@@ -341,6 +342,7 @@ class TonetuneWindow(Adw.ApplicationWindow):
         self.tempo_spin.set_digits(0)
         self.tempo_spin.set_numeric(True)
         self.tempo_spin.set_width_chars(4)
+        self.tempo_spin.set_valign(Gtk.Align.CENTER)
         self.tempo_spin.set_tooltip_text(
             "Andamento de teste (não altera o arquivo)")
         self._tempo_handler = self.tempo_spin.connect(
@@ -356,23 +358,103 @@ class TonetuneWindow(Adw.ApplicationWindow):
             Gtk.Orientation.HORIZONTAL, 0, 100, 1)
         self.volume_scale.set_draw_value(False)
         self.volume_scale.set_value(int(self.config.get("volume", 85)))
-        self.volume_scale.set_size_request(110, -1)
+        self.volume_scale.set_hexpand(True)
+        self.volume_scale.set_valign(Gtk.Align.CENTER)
         self.volume_scale.set_tooltip_text("Volume geral")
         self.volume_scale.connect("value-changed", self._on_volume_changed)
         transport.append(self.volume_scale)
         panel.append(transport)
 
-        status = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=7)
-        self.status_spinner = Gtk.Spinner()
-        self.status_spinner.set_visible(False)
-        status.append(self.status_spinner)
+        panel.append(self._build_pads())
+        panel.append(self._build_chords())
+
         self.status_label = Gtk.Label(label="Pronto", xalign=0)
         self.status_label.add_css_class("caption")
         self.status_label.add_css_class("dim-label")
         self.status_label.set_ellipsize(Pango.EllipsizeMode.END)
-        status.append(self.status_label)
-        panel.append(status)
+        panel.append(self.status_label)
         return panel
+
+    def _build_display(self) -> Gtk.Widget:
+        """Visor no estilo do LCD do teclado."""
+        display = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=14)
+        display.add_css_class("lcd")
+
+        left = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2)
+        left.set_hexpand(True)
+        self.name_label = Gtk.Label(label="—", xalign=0)
+        self.name_label.add_css_class("lcd-name")
+        self.name_label.set_ellipsize(Pango.EllipsizeMode.END)
+        left.append(self.name_label)
+        self.lcd_section = Gtk.Label(label="", xalign=0)
+        self.lcd_section.add_css_class("lcd-text")
+        self.lcd_section.set_ellipsize(Pango.EllipsizeMode.END)
+        left.append(self.lcd_section)
+        self.beat_lamps = BeatLamps()
+        left.append(self.beat_lamps)
+        display.append(left)
+
+        for attribute, caption in (("lcd_chord", "ACORDE"),
+                                   ("lcd_measure", "COMPASSO"),
+                                   ("lcd_tempo", "TEMPO")):
+            box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
+            box.set_valign(Gtk.Align.CENTER)
+            title = Gtk.Label(label=caption)
+            title.add_css_class("lcd-caption")
+            box.append(title)
+            value = Gtk.Label(label="—")
+            value.add_css_class("lcd-value")
+            value.set_width_chars(5)
+            box.append(value)
+            setattr(self, attribute, value)
+            display.append(box)
+        return display
+
+    def _build_pads(self) -> Gtk.Widget:
+        grid = Gtk.Grid(column_spacing=5, row_spacing=5,
+                        column_homogeneous=True)
+        self.pads: dict[int, Gtk.Button] = {}
+        for row, pads in enumerate(PAD_ROWS):
+            for column, (index, label) in enumerate(pads):
+                button = Gtk.Button(label=label)
+                button.add_css_class("pad")
+                button.set_focusable(False)
+                button.connect("clicked", lambda _button, i=index:
+                               self._press_section(i))
+                self.pads[index] = button
+                grid.attach(button, column, row, 1, 1)
+        return grid
+
+    def _build_chords(self) -> Gtk.Widget:
+        box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
+        roots = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=3,
+                        homogeneous=True)
+        first = None
+        for root, name in enumerate(NOTE_NAMES):
+            button = Gtk.ToggleButton(label=name)
+            button.add_css_class("chord-key")
+            button.set_focusable(False)
+            button.set_group(first)
+            first = first or button
+            button.set_active(root == 0)
+            button.connect("clicked", self._on_root_clicked, root)
+            roots.append(button)
+        box.append(roots)
+
+        qualities = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=3,
+                            homogeneous=True)
+        first = None
+        for quality in CHORD_QUALITIES:
+            button = Gtk.ToggleButton(label=quality or "maior")
+            button.add_css_class("chord-key")
+            button.set_focusable(False)
+            button.set_group(first)
+            first = first or button
+            button.set_active(quality == "")
+            button.connect("clicked", self._on_quality_clicked, quality)
+            qualities.append(button)
+        box.append(qualities)
+        return box
 
     def _build_pattern_panel(self) -> Gtk.Widget:
         panel = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
@@ -470,8 +552,6 @@ class TonetuneWindow(Adw.ApplicationWindow):
         was_paused = self.engine.paused
         if not reloading:
             self.engine.stop()
-            self._request += 1
-            self._set_busy(False)
             self.muted.clear()
             self.solo.clear()
             self.instruments.clear()
@@ -489,9 +569,12 @@ class TonetuneWindow(Adw.ApplicationWindow):
         self._file_mtime = rhythm.path.stat().st_mtime_ns
         self._file_size = rhythm.path.stat().st_size
         self.reload_button.set_sensitive(True)
+        self.engine.set_rhythm(rhythm)
+        self.engine.live.tempo = rhythm.tempo
         self._loading = True
         self.tempo_spin.set_value(rhythm.tempo)
         self._loading = False
+        self._push_mix()
         self._update_info()
         self._rebuild_sections()
         if not reloading:
@@ -535,57 +618,38 @@ class TonetuneWindow(Adw.ApplicationWindow):
                 self.section_rows[section.index] = row
         self._suppress_sections = False
 
-    def _update_badges(self) -> None:
-        while (child := self.badge_box.get_first_child()) is not None:
-            self.badge_box.remove(child)
-        if self.rhythm is None:
-            return
-        tempo = (int(self.tempo_spin.get_value())
-                 if hasattr(self, "tempo_spin") else self.rhythm.tempo)
-        for text in (
-            f"{tempo} BPM",
-            self.rhythm.signature,
-            f"{len(self.rhythm.sections)} seções",
-            f"{self.rhythm.file_size / 1024:.1f} KB",
-        ):
-            label = Gtk.Label(label=text)
-            label.add_css_class("badge")
-            self.badge_box.append(label)
-
     def _update_info(self) -> None:
         if self.rhythm is None:
             return
         self.name_label.set_label(self.rhythm.display_name)
-        self.name_label.set_tooltip_text(self.rhythm.display_name)
+        self.name_label.set_tooltip_text(str(self.rhythm.path))
         self.window_title.set_subtitle(self.rhythm.path.name)
-        self.file_label.set_label(self.rhythm.path.name)
-        self.file_label.set_tooltip_text(str(self.rhythm.path))
-        self._update_badges()
+        self.lcd_tempo.set_label(str(int(self.tempo_spin.get_value())))
+        self.lcd_chord.set_label(Chord(self._root, self._quality).name)
+        for index, button in self.pads.items():
+            section = self.rhythm.section(index)
+            button.set_sensitive(section is not None and not section.is_empty)
 
-    def _select_section(self, index: int, *, play: bool) -> None:
+    def _show_section(self, index: int) -> None:
+        section = self.rhythm.section(index)
+        self.current_index = index
+        self.current_section = section
+        self.pattern.set_position(0)
+        self._update_section_ui()
+        self._select_row(index)
+
+    def _press_section(self, index: int) -> None:
+        """Mesmo papel dos botões de seção do teclado."""
         if self.rhythm is None:
             return
         section = self.rhythm.section(index)
         if section is None or section.is_empty:
             return
-        was_active = self.engine.active
-        if index != self.current_index:
-            if was_active:
-                self.engine.stop()
-            self._request += 1
-            self._set_busy(False)
-            self.current_index = index
-            self.current_section = section
-            self._stop_timer()
-            self.pattern.set_position(0)
-            self._update_section_ui()
-            self._select_row(index)
-            if was_active or play:
-                self._start_playback()
-        elif play:
+        if not self.engine.active:
+            self._show_section(index)
             self._start_playback()
-        else:
-            self._select_row(index)
+        elif not self.engine.press(index):
+            self._set_status("Este botão não vale neste ponto do ritmo.")
 
     def _select_row(self, index: int) -> None:
         row = getattr(self, "section_rows", {}).get(index)
@@ -617,16 +681,57 @@ class TonetuneWindow(Adw.ApplicationWindow):
                 volume_overridden=part in self.volumes,
             )
             row.set_section(section)
+        self._part_ticks = {
+            part: sorted(note.tick for note in section.notes_for_part(part))
+            for part in self.part_rows}
         self._update_parts_states()
-        if self.engine.state == "stopped" and not self._busy:
+        self.beat_lamps.set_beats(section.beats)
+        self._update_display(None)
+        if self.engine.state == "stopped":
             self._set_status("Pronto.")
 
     def _update_parts_states(self) -> None:
         for part, row in getattr(self, "part_rows", {}).items():
             row.set_state(part in self.muted, part in self.solo)
 
+    def _update_display(self, position: Position | None) -> None:
+        section = self.current_section
+        if section is None or self.rhythm is None:
+            return
+        tick = position.tick if position else 0.0
+        following = position.next_section if position else None
+        beat_ticks = max(1, AC7_PPQ * 4 // section.denominator)
+        measure = int(tick // section.bar_ticks) + 1
+        beat = int((tick % section.bar_ticks) // beat_ticks)
+        self.lcd_measure.set_label(f"{measure}:{beat + 1}" if position else "—")
+        self.beat_lamps.set_beat(beat if position else -1)
+        text = section.name.upper()
+        if following is not None:
+            text += f"  ›  {self.rhythm.section(following).name.upper()}"
+        self.lcd_section.set_label(text)
+
+        blink = time.monotonic() * 4 % 2 < 1
+        for index, button in self.pads.items():
+            lit = position is not None and index == section.index
+            waiting = index == following
+            if lit or (waiting and blink):
+                button.add_css_class("pad-lit")
+            else:
+                button.remove_css_class("pad-lit")
+            if lit:
+                button.add_css_class("pad-current")
+            else:
+                button.remove_css_class("pad-current")
+
+        for part, row in self.part_rows.items():
+            ticks = self._part_ticks.get(part, [])
+            place = bisect.bisect_right(ticks, tick)
+            hit = (position is not None and place > 0
+                   and tick - ticks[place - 1] < PART_HIT_TICKS)
+            row.set_hit(hit)
+
     def _play_section(self, index: int) -> None:
-        self._select_section(index, play=True)
+        self._press_section(index)
 
     def _on_section_selected(self, _listbox, row) -> None:
         if self._suppress_sections or row is None:
@@ -634,12 +739,14 @@ class TonetuneWindow(Adw.ApplicationWindow):
         index = getattr(row, "section", None)
         if index is None:
             return
-        self._select_section(index.index, play=False)
+        if self.engine.active:
+            self._press_section(index.index)
+            self._select_row(self.current_index)
+        elif not index.is_empty:
+            self._show_section(index.index)
 
     # ================================================================ áudio
     def _toggle_play(self) -> None:
-        if self._busy:
-            return
         if self.engine.playing:
             self.engine.pause()
             self._stop_timer()
@@ -656,67 +763,27 @@ class TonetuneWindow(Adw.ApplicationWindow):
     def _start_playback(self) -> None:
         if self.rhythm is None or self.current_section is None:
             return
-        section = self.current_section
-        rhythm = self.rhythm
-        tempo = int(self.tempo_spin.get_value())
-        muted = set(self.muted)
-        solo = set(self.solo)
-        instruments = {part: (tone.program, tone.bank)
-                       for part, tone in self.instruments.items()}
-        volumes = dict(self.volumes)
-        self._request += 1
-        request = self._request
-        self._set_busy(True, f"Preparando {section.name}…")
-        self._update_play_icon()
-
-        def work() -> None:
-            try:
-                wav = self.renderer.render(
-                    rhythm, section, tempo, muted, solo,
-                    instruments, volumes)
-            except (AudioError, OSError) as exc:
-                GLib.idle_add(self._render_done, request, None, str(exc))
-            except Exception as exc:  # pragma: no cover - proteção extra
-                GLib.idle_add(self._render_done, request, None, str(exc))
-            else:
-                GLib.idle_add(self._render_done, request, wav, None)
-
-        threading.Thread(target=work, daemon=True).start()
-
-    def _render_done(self, request: int, wav: Path | None,
-                     error: str | None) -> bool:
-        if request != self._request:
-            return False
-        self._set_busy(False)
-        if error or wav is None:
-            self._set_status("Não foi possível preparar o áudio.")
-            self._toast(error or "Erro ao preparar o áudio.")
-            self._update_play_icon()
-            return False
+        self.synchro_button.set_active(False)
         try:
-            self.engine.play(wav, loop=self.loop_button.get_active())
+            self.engine.start(self.current_index)
         except AudioError as exc:
             self._set_status("Não foi possível tocar.")
             self._toast(str(exc))
-            self._update_play_icon()
-            return False
+            return
         self._set_status(self._playing_text())
         self._start_timer()
         self._update_play_icon()
-        return False
 
     def _playing_text(self) -> str:
-        if self.current_section is None:
-            return "Reproduzindo."
-        loop = " · repetindo" if self.loop_button.get_active() else ""
-        return f"Reproduzindo {self.current_section.name}{loop}."
+        if self.loop_button.get_active():
+            return "Tocando · repetindo só esta seção."
+        return "Tocando · os botões mudam a seção como no teclado."
 
     def _stop(self) -> None:
-        self._request += 1
         self.engine.stop()
         self._stop_timer()
-        self._set_busy(False)
         self.pattern.set_position(0)
+        self._update_display(None)
         self._set_status("Parado.")
         self._update_play_icon()
 
@@ -734,16 +801,21 @@ class TonetuneWindow(Adw.ApplicationWindow):
                 or self.current_section is None):
             self._timer_id = None
             return False
-        duration = self.rhythm.duration(
-            self.current_section, int(self.tempo_spin.get_value()))
-        if duration > 0:
-            self.pattern.set_position(self.engine.position() / duration)
+        position = self.engine.position()
+        if position is None:
+            return True
+        if position.section != self.current_index:
+            self._show_section(position.section)
+        self.pattern.set_position(
+            position.tick / max(1, self.current_section.total_ticks))
+        self._update_display(position)
         return True
 
     def _on_playback_finished(self) -> None:
         self._stop_timer()
         self.pattern.set_position(0)
-        self._set_status("Fim da seção.")
+        self._update_display(None)
+        self._set_status("Fim do ritmo.")
         self._update_play_icon()
 
     def _on_playback_error(self, message: str) -> None:
@@ -758,42 +830,46 @@ class TonetuneWindow(Adw.ApplicationWindow):
         else:
             icon = "media-playback-start-symbolic"
         self.play_button.set_icon_name(icon)
-        self.play_button.set_sensitive(not self._busy)
-
-    def _set_busy(self, busy: bool, text: str = "") -> None:
-        self._busy = busy
-        self.status_spinner.set_visible(busy)
-        if busy:
-            self.status_spinner.start()
-            self.status_label.set_label(text)
-        else:
-            self.status_spinner.stop()
-        self.play_button.set_sensitive(not busy)
-        self._update_play_icon()
 
     def _set_status(self, text: str) -> None:
         self.status_label.set_label(text)
-        if not self._busy:
-            self.status_spinner.set_visible(False)
-            self.status_spinner.stop()
 
     def _on_loop_toggled(self, button) -> None:
-        self.engine.set_loop(button.get_active())
-        self.config["loop"] = button.get_active()
+        self.engine.live.set_repeat(button.get_active())
+        self.config["repeat_section"] = button.get_active()
         if self.engine.playing:
             self._set_status(self._playing_text())
 
     def _toggle_loop(self) -> None:
         self.loop_button.set_active(not self.loop_button.get_active())
 
+    def _on_synchro_toggled(self, button) -> None:
+        if button.get_active():
+            self._set_status("Synchro: escolha um acorde para começar.")
+
+    def _on_root_clicked(self, _button, root: int) -> None:
+        self._root = root
+        self._apply_chord()
+
+    def _on_quality_clicked(self, _button, quality: str) -> None:
+        self._quality = quality
+        self._apply_chord()
+
+    def _apply_chord(self) -> None:
+        chord = Chord(self._root, self._quality)
+        self.engine.live.set_chord(chord)
+        self.lcd_chord.set_label(chord.name)
+        if self.synchro_button.get_active() and not self.engine.active:
+            self._start_playback()
+
     def _on_tempo_changed(self, _spin) -> None:
         if self._loading or self.rhythm is None or self.current_section is None:
             return
-        self._update_badges()
-        self.duration_label.set_label(_fmt_duration(self.rhythm.duration(
-            self.current_section, int(self.tempo_spin.get_value()))))
-        if self.engine.active or self._busy:
-            self._schedule_restart()
+        tempo = int(self.tempo_spin.get_value())
+        self.engine.live.tempo = tempo
+        self.lcd_tempo.set_label(str(tempo))
+        self.duration_label.set_label(_fmt_duration(
+            self.rhythm.duration(self.current_section, tempo)))
 
     def _on_volume_changed(self, scale) -> None:
         value = int(scale.get_value())
@@ -805,13 +881,11 @@ class TonetuneWindow(Adw.ApplicationWindow):
                       if not row.enabled.get_active()}
         self.solo = {part for part, row in self.part_rows.items()
                      if row.solo.get_active()}
-        if self.engine.active or self._busy:
-            self._schedule_restart()
+        self._push_mix()
 
     def _on_part_volume(self, part: int, value: int) -> None:
         self.volumes[part] = max(0, min(127, int(value)))
-        if self.engine.active or self._busy:
-            self._schedule_restart()
+        self._push_mix()
 
     def _open_instrument_dialog(self, part: int) -> None:
         if self.current_section is None:
@@ -822,14 +896,12 @@ class TonetuneWindow(Adw.ApplicationWindow):
         def apply(tone: Tone) -> None:
             self.instruments[part] = tone
             self._refresh_part_row(part)
-            if self.engine.active or self._busy:
-                self._schedule_restart()
+            self._push_mix()
 
         def reset() -> None:
             self.instruments.pop(part, None)
             self._refresh_part_row(part)
-            if self.engine.active or self._busy:
-                self._schedule_restart()
+            self._push_mix()
 
         dialog = InstrumentDialog(
             self, part, mixer.patch, mixer.bank, override, apply, reset)
@@ -867,23 +939,15 @@ class TonetuneWindow(Adw.ApplicationWindow):
         for part in range(1, 9):
             self.part_rows[part].set_state(False, False)
             self._refresh_part_row(part)
-        if self.engine.active or self._busy:
-            self._schedule_restart()
+        self._push_mix()
         self._toast("Mixagem original do AC7 restaurada.")
 
-    def _schedule_restart(self) -> None:
-        if self._restart_source is not None:
-            GLib.source_remove(self._restart_source)
-        self._restart_source = GLib.timeout_add(350, self._restart_now)
-
-    def _restart_now(self) -> bool:
-        self._restart_source = None
-        if self.rhythm is None or self.current_section is None:
-            return False
-        if self.engine.active or self._busy:
-            self.engine.stop()
-            self._start_playback()
-        return False
+    def _push_mix(self) -> None:
+        self.engine.live.set_mix(
+            self.muted, self.solo,
+            {part: (tone.program, tone.bank)
+             for part, tone in self.instruments.items()},
+            self.volumes)
 
     # ================================================================ arquivo
     def _open_dialog(self) -> None:
@@ -951,10 +1015,7 @@ class TonetuneWindow(Adw.ApplicationWindow):
             return
 
         was_playing = self.engine.playing
-        was_active = self.engine.active
-        self._request += 1
-        self._set_busy(False)
-        if was_active:
+        if self.engine.active:
             self.engine.stop()
             self._stop_timer()
         self._apply_rhythm(rhythm, reloading=True, autoplay=was_playing)
@@ -1122,7 +1183,7 @@ class TonetuneWindow(Adw.ApplicationWindow):
         if digit is not None and self.rhythm is not None:
             section = self.rhythm.section(digit)
             if section is not None and not section.is_empty:
-                self._select_section(digit, play=True)
+                self._press_section(digit)
                 return True
         return False
 
@@ -1140,8 +1201,8 @@ class TonetuneWindow(Adw.ApplicationWindow):
         rows = (
             ("Espaço", "Tocar ou pausar"),
             ("Esc", "Parar"),
-            ("L", "Ligar/desligar repetição"),
-            ("1 a 9 e 0", "Tocar a seção correspondente"),
+            ("L", "Repetir só a seção atual"),
+            ("1 a 9 e 0", "Apertar o botão da seção (mesma variação = virada)"),
             ("F5", "Recarregar o arquivo"),
             ("Ctrl+O", "Abrir outro ritmo"),
             ("S", "Isolar uma parte"),
@@ -1182,14 +1243,10 @@ class TonetuneWindow(Adw.ApplicationWindow):
         self.config["width"] = self.get_width()
         self.config["height"] = self.get_height()
         self._save_config()
-        self._request += 1
         self._stop_timer()
         if self._reload_source is not None:
             GLib.source_remove(self._reload_source)
             self._reload_source = None
-        if self._restart_source is not None:
-            GLib.source_remove(self._restart_source)
-            self._restart_source = None
         for monitor in self._monitors:
             monitor.cancel()
         self._monitors.clear()
